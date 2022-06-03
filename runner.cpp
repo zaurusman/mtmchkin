@@ -18,7 +18,7 @@ int main(){
     }
     catch(const exception& e)
     {
-        cout << e.what() << endl;
+        cerr << e.what() << endl;
     }
 
     return 0;
