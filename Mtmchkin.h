@@ -12,7 +12,7 @@ public:
     * @return
     *      A new instance of Mtmchkin.
     */
-    Mtmchkin(string fileName);
+    Mtmchkin(const string fileName);
     
     /*
     * Play the next Round of the game - according to the instruction in the exercise document.
@@ -28,7 +28,7 @@ public:
     * @return
     *      void
     */
-    void printLeaderBoard();
+    void printLeaderBoard() const;
     
     /*
     *  Checks if the game ended:
@@ -37,7 +37,7 @@ public:
     *          True if the game ended
     *          False otherwise
     */
-    bool isGameOver();
+    bool isGameOver() const;
     
 	/*
     *  Returns the number of rounds played.
@@ -45,7 +45,7 @@ public:
     *  @return
     *          int - number of rounds played
     */
-    int getNumberOfRounds();
+    int getNumberOfRounds() const;
 };
 
 
