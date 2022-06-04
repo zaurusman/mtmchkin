@@ -119,15 +119,18 @@ void printTreasureMessage()
 
 void printMerchantSummary(ostream &os, string playerName, int type, int cost)
 {
-    os << playerName << " has paid " << cost <<  " coins for ";
+    os << playerName << " has paid " << cost << " coins ";
+    if(type != 0){
+        os << "for ";;
+    }
+
     if(type == 1){
         os << "1 health potion!";
     }
     if(type == 2){
         os << "1 force boost!";
     }
-    os << endl;
-    os << "Safe travels!" << endl;
+    os <<  endl <<"Safe travels!" << endl;
 }
 
 /* ---------------------------------------------------------------------------------------------- */
