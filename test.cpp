@@ -87,6 +87,7 @@ bool GeneralGameSimulationTest(const string tempDeckFilename, string input, stri
     std::cin.rdbuf(cinbuf);
     std::cout.rdbuf(coutbuf);
     deleteTextFile(tempDeckFilename+".txt");
+    deleteTextFile(tempDeckFilename+"out.txt");
     return res;
 }
 
