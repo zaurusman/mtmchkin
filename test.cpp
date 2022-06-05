@@ -87,7 +87,7 @@ bool GeneralGameSimulationTest(const string tempDeckFilename, string input, stri
     std::cin.rdbuf(cinbuf);
     std::cout.rdbuf(coutbuf);
     deleteTextFile(tempDeckFilename+".txt");
-    deleteTextFile(tempDeckFilename+"out.txt");
+//    deleteTextFile(tempDeckFilename+"out.txt");
     return res;
 }
 
@@ -234,6 +234,47 @@ bool nonMostersTest()
     return GeneralGameSimulationTest(tmp_file, input, deck, expectedOutputFilename);
 }
 
+bool roundLimitTest()
+{
+    const string tmp_file("roundLimit_test");
+    string input("2\nmatamDalf Wizard\nrocky Fighter");
+    string deck("Fairy\nFairy\nFairy\nFairy\nFairy");
+    string expectedOutputFilename("tests/roundLimit_test_expected.txt");
+    return GeneralGameSimulationTest(tmp_file, input, deck, expectedOutputFilename);
+}
+
+bool allTenTest()
+{
+    const string tmp_file("allTen_test");
+    string input("2\nmatamDalf Wizard\nrocky Fighter");
+    string deck("Goblin\nGoblin\nGoblin\nGoblin\nGoblin");
+    string expectedOutputFilename("tests/allTen_test_expected.txt");
+    return GeneralGameSimulationTest(tmp_file, input, deck, expectedOutputFilename);
+}
+
+bool badPlayerInputTest()
+{
+    const string tmp_file("badPlayerInput_test");
+    string input("2\nmatamDalf Wizardd \nmatamDalf rogoe\n matamDalf Wizard\nrocky Fighter");
+    string deck("Goblin\nVampire\nGoblin\nGoblin\nDragon");
+    string expectedOutputFilename("tests/badPlayerInput_test_expected.txt");
+    return GeneralGameSimulationTest(tmp_file, input, deck, expectedOutputFilename);
+}
+
+bool merchantInputTest()
+{
+    const string tmp_file("merchantInput_test");
+    string input("2\nmatamDalf Wizardd \nmatamDalf rogoe\n matamDalf Wizard\nrocky Fighter\n"
+                 "1\n"
+                 "1\n"
+                 "0\n"
+                 "2\n"
+                 "0\n");
+    string deck("Goblin\nGoblin\nMerchant\nMerchant\nDragon");
+    string expectedOutputFilename("tests/merchantInput_test_expected.txt");
+    return GeneralGameSimulationTest(tmp_file, input, deck, expectedOutputFilename);
+}
+
 /* ---------------------------------------------------------------------------------------------- */
 
 // --------------------------------       Tests for Exceptions          ------------------------------
@@ -294,7 +335,7 @@ bool badFormatStartTest()
     string expectedOutputFilename("notneeded.txt");
     bool flag = false;
     try {
-        Mtmchkin("inputs/badFormat_test_start_of_file.txt");
+        Mtmchkin("badFormat_test_start_of_file.txt");
     }
     catch(const DeckFileFormatError& e){
         if(strcmp(e.what(),"Deck File Error: File format error in line 1")==0)
@@ -322,6 +363,12 @@ int main(){
 	run_test(badFormatTest,"Bad format exception test");
 	run_test(noFileTest,"File Doesnt exist exception test");
 	run_test(badSizeTest,"Bad size exception test");
+    run_test(roundLimitTest,"Round upper limit test");
+    run_test(allTenTest,"All reach lvl 10 test");
+    run_test(badPlayerInputTest,"Bad player input test");
+    run_test(merchantInputTest,"Merchant input test");
+
+
 
 
 
