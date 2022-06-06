@@ -15,6 +15,10 @@
 #include "Cards/Merchant.h"
 #include "Cards/Pitfall.h"
 #include "Cards/Treasure.h"
+#include "Players/Rogue.h"
+#include "Players/Wizard.h"
+#include "Players/Fighter.h"
+#include "Exception.h"
 #include <algorithm>
 #include <sstream>
 #include <random>
@@ -27,6 +31,7 @@ using std::cerr;
 using std::string;
 using std::fstream;
 using std::istringstream;
+using std::vector;
 
 
 /* ---------------------------------------------------------------------------------------------- */
@@ -50,11 +55,11 @@ bool compareFiles(const string &filename1, const string &filename2)
     string line1,line2;
     fstream file1(filename1),file2(filename2);
     if( !file2){
-         cerr<<"Error opening file 2"<<endl;
+         cerr<<"Error opening file 2"<<std::endl;
          return false;
     }
 	if(!file1 ){
-         cerr<<"Error opening file 1"<<endl;
+         cerr<<"Error opening file 1"<<std::endl;
          return false;
     }
     while(!file1.eof()){ //read file until you reach the end
@@ -162,12 +167,11 @@ bool testCard()
 /* ---------------------------------------------------------------------------------------------- */
 // --------------------------------       Tests for Mtmchkin class          ------------------------------
 
-bool gameRunTest()
-{
-	//   init cin from file
+bool gameRunTest(){
+//   init cin from file
     std::ifstream in("in.txt");
     if(!in.is_open()){
-        throw exception();
+        throw std::exception();
     }
     std::cin.rdbuf(in.rdbuf());
     Mtmchkin game("gametest.txt");
