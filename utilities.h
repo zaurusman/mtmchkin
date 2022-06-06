@@ -1,6 +1,6 @@
 
-#ifndef CPP_SHIT_UTIL_H
-#define CPP_SHIT_UTIL_H
+#ifndef CPP_UTIL_H
+#define CPP_UTIL_H
 
 #include <iostream>
 #include <cstring>
@@ -11,9 +11,7 @@
 #include "Players/Player.h"
 
 
-
 /* ---------------------------------------------------------------------------------------------- */
- 
 // ----------------       Print functions for Player class          -----------------------
 
 /*
@@ -30,11 +28,9 @@
  * @return
  *      void
  */
-void printPlayerDetails(std::ostream &os, std::string name,  std::string job, int level, int force, int HP, int coins);
-
+void printPlayerDetails(std::ostream &os, const std::string &name, const std::string &job, int level, int force, int HP, int coins);
 
 /* ---------------------------------------------------------------------------------------------- */
-
 // ----------------------------        Print functions for Card class         --------------------------
 
 /*
@@ -46,7 +42,7 @@ void printPlayerDetails(std::ostream &os, std::string name,  std::string job, in
  *      void
  */
 
-void printCardDetails( std::ostream &os,  std::string name);
+void printCardDetails(std::ostream &os, const std::string &name);
 
 /*
  * Prints the final line that seperates messages:
@@ -55,7 +51,7 @@ void printCardDetails( std::ostream &os,  std::string name);
  * @return
  *      void
  */
-void printEndOfCardDetails(ostream &os);
+void printEndOfCardDetails(std::ostream &os);
 /*
  * Prints the details of a merchant card:
  
@@ -65,8 +61,7 @@ void printEndOfCardDetails(ostream &os);
  * @return
  *      void
  */
-void printMerchantInitialMessageForInteractiveEncounter(std::ostream &os, string playerName, int coins);
-
+void printMerchantInitialMessageForInteractiveEncounter(std::ostream &os, const std::string &playerName, int coins);
 
 /*
  * Prints a message informing the player that he has an insufficient coins for this purchase.
@@ -76,7 +71,6 @@ void printMerchantInitialMessageForInteractiveEncounter(std::ostream &os, string
  *      void
  */
 void printMerchantInsufficientCoins(std::ostream &os);
-
 
 /*
  * Prints the details of a monster card:
@@ -89,7 +83,6 @@ void printMerchantInsufficientCoins(std::ostream &os);
  *      void
  */
 void printMonsterDetails(std::ostream &os, int force, int damage, int coins, bool isDragon = false);
-
 
 /*
  * Prints outcome summary of encountering the BarFight card:
@@ -130,7 +123,6 @@ void printPitfallMessage(bool isRogue);
  */
 void printTreasureMessage();
 
-
 /*
  * Prints outcome summary of encountering the Merchant card:
  
@@ -143,10 +135,9 @@ void printTreasureMessage();
  *      void
  *
  */
-void printMerchantSummary(ostream &os, string playerName, int type, int cost);
+void printMerchantSummary(std::ostream &os, const std::string &playerName, int type, int cost);
 
 /* ---------------------------------------------------------------------------------------------- */
-
 // ----------------       Print functions for Mtmchkin class          -----------------------
 
 /*
@@ -198,7 +189,7 @@ void printInvalidInput();
  *      void
  */
 
-void printTurnStartMessage(std::string name);
+void printTurnStartMessage(const std::string &name);
 
 
 /* Prints info at the start of a round (used at the start of each round):
@@ -217,7 +208,7 @@ void printRoundStartMessage(int roundCount);
  * @return
  *      void
  */
-void printWinBattle(std::string playerName, std::string monsterName);
+void printWinBattle(const std::string &playerName, const std::string &monsterName);
 
 /*
  * Prints info in case a player lost in an encounter (Battle card):
@@ -228,8 +219,7 @@ void printWinBattle(std::string playerName, std::string monsterName);
  * @return
  *      void
  */
-void printLossBattle(std::string playerName, std::string monsterName);
-
+void printLossBattle(const std::string &playerName, const std::string &monsterName);
 
 /*
  * Prints a message indicating the start of the LeaderBoard Ranking:
@@ -248,7 +238,7 @@ void printLeaderBoardStartMessage();
  * @return
  *      void
  */
-void printPlayerLeaderBoard(int ranking, Player& player);
+void printPlayerLeaderBoard(int ranking, const Player &player);
 
 /*
  * Prints info indicating the end of the game:
@@ -279,4 +269,4 @@ void printEnterTeamSizeMessage();
 
 
 
-#endif //CPP_SHIT_UTIL_H
+#endif //CPP_UTIL_H
