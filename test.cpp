@@ -24,6 +24,7 @@
 #include <random>
 #include <cstdio>
 #include <fstream>
+#include <cstring>
 
 using std::unique_ptr;
 using std::cout;
