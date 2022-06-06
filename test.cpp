@@ -23,7 +23,11 @@
 
 using std::unique_ptr;
 using std::cout;
+using std::cerr;
 using std::string;
+using std::fstream;
+using std::istringstream;
+
 
 /* ---------------------------------------------------------------------------------------------- */
 // --------------------------------       General Helper Functions          ------------------------------
@@ -75,7 +79,7 @@ bool GeneralGameSimulationTest(const string &tempDeckFilename, string input, str
     std::streambuf *cinbuf = std::cin.rdbuf(); //save old buf
     std::cin.rdbuf(in.rdbuf());
 
-    ofstream outfile(tempDeckFilename+"out.txt");
+    std::ofstream outfile(tempDeckFilename+"out.txt");
     std::streambuf *coutbuf = std::cout.rdbuf(); //save old buf
     std::cout.rdbuf(outfile.rdbuf());
     Mtmchkin game(tempDeckFilename+".txt");
@@ -158,8 +162,9 @@ bool testCard()
 /* ---------------------------------------------------------------------------------------------- */
 // --------------------------------       Tests for Mtmchkin class          ------------------------------
 
-bool gameRunTest(){
-//   init cin from file
+bool gameRunTest()
+{
+	//   init cin from file
     std::ifstream in("in.txt");
     if(!in.is_open()){
         throw exception();
@@ -294,6 +299,7 @@ bool badFormatTest()
     bool flag = false;
     try {
         Mtmchkin("inputs/badFormat_test.txt");
+//        GeneralGameSimulationTest(tmp_file, input, deck, expectedOutputFilename);
     }
     catch(const DeckFileFormatError& e){
         if(strcmp(e.what(),"Deck File Error: File format error in line 2")==0) {
@@ -311,7 +317,7 @@ bool badFormatStartTest()
     string expectedOutputFilename("notneeded.txt");
     bool flag = false;
     try {
-        Mtmchkin("inputs/badFormat_test_start_of_file.txt");
+        Mtmchkin("badFormat_test_start_of_file.txt");
     }
     catch(const DeckFileFormatError& e){
         if(strcmp(e.what(),"Deck File Error: File format error in line 1")==0)
@@ -338,10 +344,10 @@ int main(){
 	run_test(badFormatTest,"Bad format exception test");
 	run_test(noFileTest,"File Doesnt exist exception test");
 	run_test(badSizeTest,"Bad size exception test");
-	run_test(roundLimitTest,"Round upper limit test");
-    	run_test(allTenTest,"All reach lvl 10 test");
-    	run_test(badPlayerInputTest,"Bad player input test");
-    	run_test(merchantInputTest,"Merchant input test");
-	
-	return 0;
+    run_test(roundLimitTest,"Round upper limit test");
+    run_test(allTenTest,"All reach lvl 10 test");
+    run_test(badPlayerInputTest,"Bad player input test");
+    run_test(merchantInputTest,"Merchant input test");
+
+    return 0;
 }
