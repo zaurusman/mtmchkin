@@ -168,8 +168,9 @@ bool testCard()
 /* ---------------------------------------------------------------------------------------------- */
 // --------------------------------       Tests for Mtmchkin class          ------------------------------
 
-bool gameRunTest(){
-//   init cin from file
+bool gameRunTest()
+{
+    //   init cin from file
     std::ifstream in("in.txt");
     if(!in.is_open()){
         throw std::exception();
@@ -240,7 +241,7 @@ bool allTenTest()
 bool badPlayerInputTest()
 {
     const string tmp_file("badPlayerInput_test");
-    string input("2\nmatamDalf Wizardd \nmatamDalf rogoe\n matamDalf Wizard\nrocky Fighter");
+    string input("2\nmatamDalf Wizardd\nmatamDalf rogoe\nmatamDalf Wizard\nrocky Fighter");
     string deck("Goblin\nVampire\nGoblin\nGoblin\nDragon");
     string expectedOutputFilename("tests/badPlayerInput_test_expected.txt");
     return GeneralGameSimulationTest(tmp_file, input, deck, expectedOutputFilename);
@@ -249,7 +250,7 @@ bool badPlayerInputTest()
 bool merchantInputTest()
 {
     const string tmp_file("merchantInput_test");
-    string input("2\nmatamDalf Wizardd \nmatamDalf rogoe\n matamDalf Wizard\nrocky Fighter\n"
+    string input("2\nmatamDalf Wizardd\nmatamDalf rogoe\nmatamDalf Wizard\nrocky Fighter"
                  "1\n"
                  "1\n"
                  "0\n"
@@ -266,7 +267,7 @@ bool merchantInputTest()
 bool badSizeTest()
 {
     const string tmp_file("badSize_test");
-    string input("4\nBarbieGirl Wizard\nInABarbieWorld Rogue\n MadeOfPlastic Rogue\nITSFANTASTIC Wizard");
+    string input("4\nBarbieGirl Wizard\nInABarbieWorld Rogue\nMadeOfPlastic Rogue\nITSFANTASTIC Wizard");
     string deck("Fairy");
     string expectedOutputFilename("notneeded.txt");
 	bool flag= false;
@@ -304,7 +305,6 @@ bool badFormatTest()
     bool flag = false;
     try {
         Mtmchkin("inputs/badFormat_test.txt");
-//        GeneralGameSimulationTest(tmp_file, input, deck, expectedOutputFilename);
     }
     catch(const DeckFileFormatError& e){
         if(strcmp(e.what(),"Deck File Error: File format error in line 2")==0) {
