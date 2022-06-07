@@ -322,7 +322,7 @@ bool badFormatStartTest()
     string expectedOutputFilename("notneeded.txt");
     bool flag = false;
     try {
-        Mtmchkin("badFormat_test_start_of_file.txt");
+        Mtmchkin("inputs/badFormat_test_start_of_file.txt");
     }
     catch(const DeckFileFormatError& e){
         if(strcmp(e.what(),"Deck File Error: File format error in line 1")==0)
