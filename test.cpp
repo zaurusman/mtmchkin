@@ -136,17 +136,6 @@ bool cardsPrintsTest()
     return true;
 }
 
-bool playersPrintsTest()
-{
-    
-    Rogue player1("Itay");
-    Fighter player2("Efrat");
-    Wizard player3("Jimmy");
-    cout << player1 << std::endl << player2 << std::endl << player3   
-                    << std::endl;
-    return true;
-}
-
 bool testCard()
 {
     vector<unique_ptr<Card>> cards;
