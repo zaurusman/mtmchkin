@@ -328,7 +328,6 @@ bool badFormatStartTest()
 int main(){
     
 	run_test(cardsPrintsTest,"cardsPrintsTest");
-	run_test(playersPrintsTest,"playersPrintsTest");
 	run_test(testCard,"Deck creation test");
 	run_test(dragonDenTest,"Dragon Den simulation test");
 	run_test(goblinCaveTest,"Goblin Cave simulation test");
