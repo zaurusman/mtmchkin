@@ -12,7 +12,7 @@
      * special ability: the effect of a healing card is doubled.
     */
 
-class Wizard : public virtual Player {
+class Wizard : public Player {
 
     Wizard(std::string name, int maxHP, int force);
 

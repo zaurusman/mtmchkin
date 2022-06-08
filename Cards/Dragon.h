@@ -7,14 +7,15 @@
 
 #include "BattleCard.h"
 
-class Dragon : public virtual BattleCard {
+class Dragon : public BattleCard {
 
 public:
     Dragon();
+    ~Dragon() = default;
     private:
     static const int DRAGON_FORCE = 25;
     static const int DRAGON_LOOT = 1000;
-    static const int DRAGONF_LOSS = -1;
+    static const int DRAGON_LOSS = -1;//TODO: change it
 };
 
 

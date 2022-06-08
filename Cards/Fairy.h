@@ -8,9 +8,10 @@
 
 #include "Card.h"
 
-class Fairy : public virtual Card{
+class Fairy : public Card{
 public:
     Fairy();
+    ~Fairy()=default;
     void applyEncounter(Player& player) const override;
 
 private:

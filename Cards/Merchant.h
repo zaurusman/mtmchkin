@@ -7,9 +7,14 @@
 
 
 #include "Card.h"
+#include "utilities.h"
 
-class Merchant : public virtual Card{
+class Merchant : public Card{
 
+    Merchant();
+    ~Merchant() = default;
+
+    void PrintInfo() const;
 };
 
 

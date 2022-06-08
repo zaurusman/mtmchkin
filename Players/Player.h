@@ -124,11 +124,11 @@ public:
     */
     int getAttackStrength()const;
 
-    virtual /* gives the current class of the player,
+    /* gives the current class of the player,
     * @return
     *      player's class.
     */
-    PlayerClass getClass() const;
+    virtual PlayerClass getClass() const = 0;
     /*
      * explicitly tells the compiler to use the default methods:
     */

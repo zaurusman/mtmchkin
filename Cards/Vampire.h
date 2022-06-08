@@ -10,9 +10,10 @@
 #define VAMPIRELOOT 2
 #define VAMPIRELOSS 10
 
-class Vampire : public virtual BattleCard{
+class Vampire : public BattleCard{
 public:
     Vampire();
+    ~Vampire()=default;
 private:
     static const int VAMPIRE_FORCE =10;
     static const int VAMPIRE_LOOT = 2;

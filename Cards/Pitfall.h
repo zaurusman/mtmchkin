@@ -8,10 +8,11 @@
 
 #include "Card.h"
 
-class Pitfall : public virtual Card{
+class Pitfall : public Card{
 public:
 
     Pitfall();
+    ~Pitfall() = default;
     void applyEncounter(Player& player) const override;
 private:
     static const int DAMAGE =10;
