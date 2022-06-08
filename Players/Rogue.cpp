@@ -4,15 +4,13 @@
 
 #include "Rogue.h"
 
-Rogue::Rogue(std::string name, int maxHP, int force): Player(name,maxHP,force)
-{}
+Rogue::Rogue(std::string name): Player(name) {}
 
 void Rogue::addCoins(int increment)
 {
     Player::addCoins(2*increment);
 }
 
-PlayerClass Rogue::getClass() const
-{
-    return PlayerClass::Rogue;
+std::string Rogue::getJob() const{
+    return "Rogue";
 }

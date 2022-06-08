@@ -12,13 +12,13 @@
      * special ability: the effect of a healing card is doubled.
     */
 
-class Wizard : public virtual Player {
+class Wizard : public Player {
 
-    Wizard(std::string name, int maxHP, int force);
+    Wizard(std::string name);
 
     void heal(int increment) override;
 
-    PlayerClass getClass() const override;
+    std::string getJob() const override;
 };
 
 

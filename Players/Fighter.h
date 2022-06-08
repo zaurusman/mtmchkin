@@ -12,13 +12,14 @@
      * special ability: attack calculated by: force*2+level
     */
 
-class Fighter :public virtual Player {
+class Fighter :public Player {
 
-    Fighter(std::string name, int maxHP, int force);
+    Fighter(std::string name);
 
     int getAttackStrength() const override;
 
-    PlayerClass getClass() const override;
+    std::string getJob() const override;
+
 };
 
 

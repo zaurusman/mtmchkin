@@ -4,16 +4,13 @@
 
 #include "Wizard.h"
 
-Wizard::Wizard(std::string name, int maxHP, int force): Player(name,maxHP,force)
-{}
+Wizard::Wizard(std::string name): Player(name) {}
 
 
 void Wizard::heal(int increment)
 {
     Player::heal(2*increment);
 }
-
-PlayerClass Wizard::getClass() const
-{
-    return PlayerClass::Wizard;
+std::string Wizard::getJob() const {
+    return "Wizard";
 }

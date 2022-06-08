@@ -18,7 +18,6 @@
      * Health Points - the current HP of the player. a natural number between 0-MaxHP
      * coins - the amount of coins the player has. a natural number.
     */
-enum class PlayerClass {Fighter,Wizard, Rogue}; // The class of the Player
 
 class Player {
 public:
@@ -115,18 +114,12 @@ public:
     */
     virtual int getAttackStrength()const;
 
-    /* gives the current class of the player,
-    * @return
-    *      player's class.
-    */
-    virtual PlayerClass getClass() const;
-    /*
-     * explicitly tells the compiler to use the default methods:
-    */
+
     Player(const Player&) = default;
     ~Player() = default;
     Player& operator=(const Player& other) = default;
 
+    virtual std::string getJob() const = 0;
 private:
     /* Class related constants:
      *  DEFAULT_MAX_HP - default value for max hp.
@@ -150,7 +143,7 @@ private:
 
 };
 
-
+std::ostream& operator<<(std::ostream& outStream, const );
 
 
 
