@@ -4,14 +4,13 @@
 
 #include "Fighter.h"
 
-Fighter::Fighter(std::string name, int maxHP, int force): Player(name,maxHP,force)
-{}
+Fighter::Fighter(std::string name): Player(name){}
+
 int Fighter::getAttackStrength() const
 {
-    return Player::getAttackStrength() + Player::getAttackStrength() - Player::getLevel();
+    return (2*Player::getAttackStrength() - Player::getLevel());
 }
 
-PlayerClass Fighter::getClass() const
-{
-    return PlayerClass::Fighter;
+std::string Fighter::getJob() const {
+    return "Fighter";
 }

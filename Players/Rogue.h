@@ -14,11 +14,10 @@
 
 class Rogue : public Player {
 
-    Rogue(std::string name, int maxHP, int force);
+    Rogue(std::string name);
 
     void addCoins(int increment) override;
-
-    PlayerClass getClass() const override;
+    std::string getJob() const override;
 };
 
 

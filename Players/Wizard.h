@@ -14,11 +14,11 @@
 
 class Wizard : public Player {
 
-    Wizard(std::string name, int maxHP, int force);
+    Wizard(std::string name);
 
     void heal(int increment) override;
 
-    PlayerClass getClass() const override;
+    std::string getJob() const override;
 };
 
 
