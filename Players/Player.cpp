@@ -5,23 +5,21 @@
 #include "Player.h"
 
 
-Player::Player(std::string name, int maxHP, int force) :
-    m_name(name),
-    m_level(1),
-    m_force(force),
-    m_maxHP(maxHP),
-    m_HP(maxHP),
-    m_coins(10)//TODO: maybe make a new constructor for coin input
+Player::Player(std::string name) :
+    m_name(Player::DEFAULT_NAME), //TODO: POSSIBLY CATCH EXCEPTION?
+    m_level(Player::DEFAULT_START_LEVEL),
+    m_force(Player::DEFAULT_FORCE),
+    m_maxHP(Player::DEFAULT_MAX_HP),
+    m_HP(Player::DEFAULT_MAX_HP),
+    m_coins(Player::DEFAULT_COINS)
 {
-    if (force <= 0)
-    {
-        m_force = DEFAULT_FORCE;
+    int length = name.length();
+    if(length > 15){
+        throw InvalidName();
     }
-    if (maxHP <= 0){
-        m_maxHP = Player::DEFAULT_MAX_HP;
-        m_HP = Player::DEFAULT_MAX_HP;
-    }
+    m_name = name;
 }
+
 void Player::printInfo() const
 {
     printPlayerInfo(m_name.c_str(), m_level, m_force, m_HP, m_coins);
