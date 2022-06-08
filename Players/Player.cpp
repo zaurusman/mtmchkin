@@ -6,7 +6,7 @@
 
 
 Player::Player(std::string name) :
-    m_name(Player::DEFAULT_NAME), //TODO: POSSIBLY CATCH EXCEPTION?
+    m_name(""),
     m_level(Player::DEFAULT_START_LEVEL),
     m_force(Player::DEFAULT_FORCE),
     m_maxHP(Player::DEFAULT_MAX_HP),

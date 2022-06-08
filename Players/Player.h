@@ -23,11 +23,6 @@ enum class PlayerClass {Fighter,Wizard, Rogue}; // The class of the Player
 class Player {
 public:
 
-    class InvalidName : public std::length_error{
-    public:
-        InvalidName(): std::length_error("Invalid Name Length.") {}
-    };
-
 
     /*
      * C'tor of Player class
@@ -144,7 +139,6 @@ private:
     static const int DEFAULT_COINS = 10;
     static const int DEFAULT_START_LEVEL = 1;
     static const int MAX_LEVEL = 10;
-    static const std::string DEFAULT_NAME = "Default";
 
     std::string m_name;
     int m_level;
