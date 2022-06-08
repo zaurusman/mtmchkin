@@ -20,11 +20,6 @@ Player::Player(std::string name) :
     m_name = name;
 }
 
-void Player::printInfo() const
-{
-    printPlayerInfo(m_name.c_str(), m_level, m_force, m_HP, m_coins);
-}
-
 void Player::levelUp()
 {
     if(m_level + 1 <= MAX_LEVEL)
@@ -103,4 +98,10 @@ int Player::getAttackStrength() const
 {
     return (m_level + m_force);
 }
+void Player::getInfoStream(std::ostream& outStream) const{
+    printPlayerDetails(outStream, m_name, this->getJob(), m_level, m_force, m_HP, m_coins);
 
+}
+std::ostream& operator<<(std::ostream& outStream, const Player& player){
+    player.getInfoStream(outStream);
+}

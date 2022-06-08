@@ -7,7 +7,7 @@
 #include <string>
 #include "utilities.h"
 
-
+//TODO: EXCEPTIONS AND DOCUMENTATION
 
 /* Player:
      * Each player has:
@@ -114,6 +114,7 @@ public:
     */
     virtual int getAttackStrength()const;
 
+    void getInfoStream(std::ostream& outStream) const;
 
     Player(const Player&) = default;
     ~Player() = default;
@@ -143,7 +144,7 @@ private:
 
 };
 
-std::ostream& operator<<(std::ostream& outStream, const );
+std::ostream& operator<<(std::ostream& outStream, const Player& player);
 
 
 
