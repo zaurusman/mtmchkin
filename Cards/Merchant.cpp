@@ -7,7 +7,17 @@
 Merchant::Merchant():Card("Merchant")
 {}
 
-void Merchant::PrintInfo(Player& player) const
+void Merchant::printInfo() const //TODO: change it
+{}
+
+void Merchant::applyEncounter(Player &player) const
 {
-    printMerchantInitialMessageForInteractiveEncounter(std::cout,player,);
+    printMerchantInitialMessageForInteractiveEncounter(std::cout,player.getName(),player.getcoins());
+    int 
 }
+
+void Merchant::printInfo(Player& player) const
+{
+
+}
+

@@ -114,16 +114,20 @@ public:
     */
     virtual int getAttackStrength()const;
 
-
-    Player(const Player&) = default;
-    ~Player() = default;
-    Player& operator=(const Player& other) = default;
-
     /* gives the current class of the player,
     * @return
     *      player's class.
     */
     virtual std::string getJob() const = 0;
+
+    std::string getName() const;
+    int getcoins() const;
+
+    Player(const Player&) = default;
+    ~Player() = default;
+    Player& operator=(const Player& other) = default;
+
+
 private:
     /* Class related constants:
      *  DEFAULT_MAX_HP - default value for max hp.

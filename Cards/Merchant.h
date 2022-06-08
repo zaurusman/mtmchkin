@@ -14,7 +14,11 @@ class Merchant : public Card{
     Merchant();
     ~Merchant() = default;
 
-    void PrintInfo() const;
+    void printInfo() const override;
+
+    void printInfo(Player &player) const;
+
+    void applyEncounter(Player &player) const;
 };
 
 

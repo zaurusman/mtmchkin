@@ -22,7 +22,7 @@ Player::Player(std::string name) :
 
 void Player::printInfo() const
 {
-    printPlayerInfo(m_name.c_str(), m_level, m_force, m_HP, m_coins);
+   // printPlayerInfo(m_name.c_str(), m_level, m_force, m_HP, m_coins);
 }
 
 void Player::levelUp()
@@ -104,4 +104,13 @@ int Player::getAttackStrength() const
     return (m_level + m_force);
 }
 
+std::string Player::getName() const
+{
+    return m_name;
+}
+
+int Player::getcoins() const
+{
+    return m_coins;
+}
 
