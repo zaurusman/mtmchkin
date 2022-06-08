@@ -15,5 +15,3 @@ void Fairy::applyEncounter(Player& player) const
     }
     printFairyMessage(false);
 }
-
-void Fairy::getCardDetails(std::ostream &outStream) const {}
