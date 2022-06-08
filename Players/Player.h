@@ -23,15 +23,6 @@ enum class PlayerClass {Fighter,Wizard, Rogue}; // The class of the Player
 class Player {
 public:
 
-    /* Class related constants:
-     *  DEFAULT_MAX_HP - default value for max hp.
-     *  DEFAULT_FORCE - default value for force.
-     *  MAX_LEVEL - the maximum level that can be reached.
-     * */
-
-    static const int DEFAULT_MAX_HP = 100;
-    static const int DEFAULT_FORCE = 5;
-    static const int MAX_LEVEL = 10;
 
     /*
      * C'tor of Player class
@@ -42,7 +33,7 @@ public:
      * @return
      *      A new instance of Player.
     */
-    explicit Player(std::string name, int maxHP = DEFAULT_MAX_HP,  int force = DEFAULT_FORCE);
+    explicit Player(std::string name);
 
     /*
      * prints the stats of the player
@@ -97,13 +88,13 @@ public:
     */
     bool isKnockedOut()const;
 
-    virtual /*
+    /*
      * increase the coins of the player by a given amount.
      * @param increment - the amount of coins to add.
      * @return
      *      void
     */
-    void addCoins(int increment);
+    virtual void addCoins(int increment);
 
     /*
      * decrease the coins amount of the player by a given amount.
@@ -116,13 +107,13 @@ public:
     */
     bool pay(int decrease);
 
-    virtual /*
+    /*
      * gives the current attack strength of the player,
      * which is determined by: level + force.
      * @return
      *      player's attack strength.
     */
-    int getAttackStrength()const;
+    virtual int getAttackStrength()const;
 
     /* gives the current class of the player,
     * @return
@@ -137,6 +128,18 @@ public:
     Player& operator=(const Player& other) = default;
 
 private:
+    /* Class related constants:
+     *  DEFAULT_MAX_HP - default value for max hp.
+     *  DEFAULT_FORCE - default value for force.
+     *  MAX_LEVEL - the maximum level that can be reached.
+     * */
+
+    static const int DEFAULT_MAX_HP = 100;
+    static const int DEFAULT_FORCE = 5;
+    static const int DEFAULT_COINS = 10;
+    static const int DEFAULT_START_LEVEL = 1;
+    static const int MAX_LEVEL = 10;
+
     std::string m_name;
     int m_level;
     int m_force;
