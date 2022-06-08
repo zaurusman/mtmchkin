@@ -7,10 +7,10 @@
 #include "Card.h"
 
 class EventCard : public Card {
-public:
 
+protected:
     static const int DEFAULT_EVENT_VALUE = 10;
-
+public:
     explicit EventCard(std::string name): Card(name){}
     ~EventCard() = default;
 };
