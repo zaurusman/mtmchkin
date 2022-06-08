@@ -7,7 +7,7 @@
 #include <string>
 #include "utilities.h"
 
-//TODO: EXCEPTIONS AND DOCUMENTATION
+
 
 /* Player:
      * Each player has:
@@ -115,12 +115,20 @@ public:
     virtual int getAttackStrength()const;
 
     void getInfoStream(std::ostream& outStream) const;
+    /* gives the current class of the player,
+    * @return
+    *      player's class.
+    */
+    virtual std::string getJob() const = 0;
+
+    std::string getName() const;
+    int getcoins() const;
 
     Player(const Player&) = default;
     ~Player() = default;
     Player& operator=(const Player& other) = default;
 
-    virtual std::string getJob() const = 0;
+
 private:
     /* Class related constants:
      *  DEFAULT_MAX_HP - default value for max hp.

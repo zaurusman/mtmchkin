@@ -6,5 +6,5 @@
 
 //TODO: make sure it kills the player.
 Dragon::Dragon():
-    BattleCard(DRAGON_FORCE,DRAGON_LOOT,DRAGONF_LOSS,"Dragon")
+    BattleCard(DRAGON_FORCE,DRAGON_LOOT,DRAGON_LOSS,"Dragon")
 {}

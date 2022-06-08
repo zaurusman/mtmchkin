@@ -105,3 +105,13 @@ void Player::getInfoStream(std::ostream& outStream) const{
 std::ostream& operator<<(std::ostream& outStream, const Player& player){
     player.getInfoStream(outStream);
 }
+std::string Player::getName() const
+{
+    return m_name;
+}
+
+int Player::getcoins() const
+{
+    return m_coins;
+}
+

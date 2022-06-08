@@ -12,7 +12,7 @@
      * special ability: gets 2x coins during the whole game.
     */
 
-class Rogue : public virtual Player {
+class Rogue : public Player {
 
     Rogue(std::string name);
 
