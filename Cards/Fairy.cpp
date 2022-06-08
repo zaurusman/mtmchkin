@@ -4,13 +4,12 @@
 
 #include "Fairy.h"
 
-Fairy::Fairy():Card(CardType::Heal,"Fairy")
-{}
+Fairy::Fairy():Card("Fairy") {}
 
 void Fairy::applyEncounter(Player& player) const
 {
-    if(player.getClass()==PlayerClass::Wizard)
-    {
-        player.heal(INCREMENT);
+    Wizard* testPlayer = dynamic_cast<Wizard*>(&player);
+    if (testPlayer != nullptr){
+        player.heal(Fairy::INCREMENT);
     }
 }

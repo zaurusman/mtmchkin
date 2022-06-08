@@ -14,6 +14,7 @@ public:
     Pitfall();
     ~Pitfall() = default;
     void applyEncounter(Player& player) const override;
+    void getCardDetails(std::ostream& outStream) const override;
 private:
     static const int DAMAGE =10;
 };

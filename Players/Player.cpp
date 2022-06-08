@@ -98,13 +98,17 @@ int Player::getAttackStrength() const
 {
     return (m_level + m_force);
 }
+
 void Player::getInfoStream(std::ostream& outStream) const{
     printPlayerDetails(outStream, m_name, this->getJob(), m_level, m_force, m_HP, m_coins);
 
 }
+
 std::ostream& operator<<(std::ostream& outStream, const Player& player){
     player.getInfoStream(outStream);
+    return outStream;
 }
+
 std::string Player::getName() const
 {
     return m_name;

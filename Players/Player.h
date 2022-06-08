@@ -35,13 +35,6 @@ public:
     explicit Player(std::string name);
 
     /*
-     * prints the stats of the player
-     * @return
-     *      void
-    */
-    void printInfo()const;
-
-    /*
      * levels up the player (up to a max of level 10).
      * @return
      *      void

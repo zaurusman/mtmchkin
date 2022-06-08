@@ -7,19 +7,13 @@
 
 
 #include <string>
-#include "Players/Player.h"
+#include "../Players/Player.h"
+#include "../Players/Rogue.h"
+#include "../Players/Wizard.h"
+#include "../Players/Fighter.h"
 #include "utilities.h"
 
-/*
- *  CardType:
- *  Each card has a type:
- *  BATTLE - Battle against a monster.
- *  BUFF - Increase your player's force by 'm_force' points of CardStats.
- *  HEAL - Increase your player's HP by 'm_heal' points  of CardStats (no more than maxHP points).
- *  TREASURE - Get 'm_profit' coins of CardStats.
-*/
-enum class CardType {Battle, Buff, Heal, Treasure,Event}; // The type of the Card
-//TODO: explain about the card class
+//TODO: explain about the card class, check if assignment/copy are needed.
 class Card {
 public:
     /*
@@ -38,7 +32,7 @@ public:
      *
      * @param player - The player.
      * @return
-     *      voi
+     *      void
     */
      virtual void applyEncounter(Player& player) const = 0;
 
@@ -53,14 +47,18 @@ public:
     /*
      * Here we are explicitly telling the compiler to use the default methods
     */
-    Card(const Card&) = default;
-    ~Card() = default;
-    Card& operator=(const Card& other) = default;
 
+    ~Card() = default;
+    Card(const Card&) = delete;
+    Card& operator=(const Card& other) = delete;
+
+    void getInfoStream(std::ostream& outStream) const;
+    virtual void getCardDetails(std::ostream& outStream) const = 0; //TODO: IMPLEMENT FOR ALL CARDS
 
 private:
     std::string m_cardName;
-
 };
+
+std::ostream& operator<<(std::ostream& outStream, const Card &card);
 
 #endif //MTMCHKIN_CARD_H

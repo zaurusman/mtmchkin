@@ -3,13 +3,16 @@
 //
 
 #include "Pitfall.h"
-Pitfall::Pitfall():Card(CardType::Event,"Pitfall")//TODO: delete the card type from every card class.
-{}
+Pitfall::Pitfall():Card("Pitfall"){}
 
 void Pitfall::applyEncounter(Player& player) const
 {
-    if(!(player.getClass()==PlayerClass::Rogue))
-    {
-        player.damage(DAMAGE);
+    Rogue* testPlayer = dynamic_cast<Rogue*>(&player);
+    if (testPlayer == nullptr){
+        player.damage(Pitfall::DAMAGE);
     }
+}
+
+void Pitfall::getCardDetails(std::ostream &outStream) const {
+    printPitfallMessage()
 }
