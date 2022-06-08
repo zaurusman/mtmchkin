@@ -10,6 +10,7 @@
 #include "utilities.h"
 
 class Merchant : public Card{
+public:
 
     Merchant();
     ~Merchant() = default;
@@ -19,6 +20,13 @@ class Merchant : public Card{
     void printInfo(Player &player) const;
 
     void applyEncounter(Player &player) const;
+private:
+    static const int DONT_BUY = 0;
+    static const int BUY_POTION = 1;
+    static const int POTION_PRICE = 5;
+    static const int BUFF_PRICE = 10;
+    static const int BUY_BUFF = 2;
+
 };
 
 

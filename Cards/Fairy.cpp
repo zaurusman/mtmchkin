@@ -4,7 +4,7 @@
 
 #include "Fairy.h"
 
-Fairy::Fairy():Card(CardType::Heal,"Fairy")
+Fairy::Fairy():Card("Fairy")
 {}
 
 void Fairy::applyEncounter(Player& player) const
