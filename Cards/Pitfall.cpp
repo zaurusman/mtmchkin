@@ -3,16 +3,14 @@
 //
 
 #include "Pitfall.h"
-Pitfall::Pitfall():Card("Pitfall"){}
+Pitfall::Pitfall():EventCard("Pitfall"){}
 
 void Pitfall::applyEncounter(Player& player) const
 {
     Rogue* testPlayer = dynamic_cast<Rogue*>(&player);
     if (testPlayer == nullptr){
         player.damage(Pitfall::DAMAGE);
+        printPitfallMessage(false);
     }
-}
-
-void Pitfall::getCardDetails(std::ostream &outStream) const {
-    printPitfallMessage()
+    printPitfallMessage(true);
 }

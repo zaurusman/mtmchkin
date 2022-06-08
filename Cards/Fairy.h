@@ -6,16 +6,16 @@
 #define MTMCHKIN_FAIRY_H
 
 
-#include "Card.h"
+#include "EventCard.h"
 
-class Fairy : public Card{
+class Fairy : public EventCard{
 public:
     Fairy();
-    ~Fairy()=default;
+    ~Fairy() = default;
     void applyEncounter(Player& player) const override;
 
 private:
-    static const int INCREMENT = 10;
+    static const int HEAL_VALUE = EventCard::DEFAULT_EVENT_VALUE;
 };
 
 

@@ -18,7 +18,7 @@ class Merchant : public Card{
 
     void printInfo(Player &player) const;
 
-    void applyEncounter(Player &player) const;
+    void applyEncounter(Player &player);
 };
 
 

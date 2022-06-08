@@ -4,12 +4,16 @@
 
 #include "Fairy.h"
 
-Fairy::Fairy():Card("Fairy") {}
+Fairy::Fairy():EventCard("Fairy") {}
 
 void Fairy::applyEncounter(Player& player) const
 {
     Wizard* testPlayer = dynamic_cast<Wizard*>(&player);
     if (testPlayer != nullptr){
-        player.heal(Fairy::INCREMENT);
+        player.heal(Fairy::HEAL_VALUE);
+        printFairyMessage(true);
     }
+    printFairyMessage(false);
 }
+
+void Fairy::getCardDetails(std::ostream &outStream) const {}

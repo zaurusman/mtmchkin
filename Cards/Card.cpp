@@ -9,8 +9,10 @@ Card::Card(std::string cardName) :
 {}
 void Card::getInfoStream(std::ostream& outStream) const{
     printCardDetails(outStream, m_cardName);
-    this->getCardDetails(outStream);
     printEndOfCardDetails(outStream);
+}
+std::string Card::getName() const{
+    return m_cardName;
 }
 std::ostream& operator<<(std::ostream& outStream, const Card &card){
     card.getInfoStream(outStream);

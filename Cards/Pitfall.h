@@ -6,17 +6,17 @@
 #define MTMCHKIN_PITFALL_H
 
 
-#include "Card.h"
+#include "EventCard.h"
 
-class Pitfall : public Card{
+class Pitfall : public EventCard{
 public:
 
     Pitfall();
     ~Pitfall() = default;
     void applyEncounter(Player& player) const override;
-    void getCardDetails(std::ostream& outStream) const override;
+
 private:
-    static const int DAMAGE =10;
+    static const int DAMAGE = EventCard::DEFAULT_EVENT_VALUE;
 };
 
 

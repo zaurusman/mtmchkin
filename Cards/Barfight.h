@@ -6,16 +6,16 @@
 #define MTMCHKIN_BARFIGHT_H
 
 
-#include "Card.h"
+#include "EventCard.h"
 
-class Barfight : public Card{
+class Barfight : public EventCard{
 public:
 
     Barfight();
     ~Barfight() = default;
     void applyEncounter(Player& player) const override;
 private:
-    static const int DAMAGE = 10;
+    static const int DAMAGE = EventCard::DEFAULT_EVENT_VALUE;
 };
 
 

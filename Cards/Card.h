@@ -9,11 +9,11 @@
 #include <string>
 #include "../Players/Player.h"
 #include "../Players/Rogue.h"
-#include "../Players/Wizard.h"
 #include "../Players/Fighter.h"
+#include "../Players/Wizard.h"
 #include "utilities.h"
 
-//TODO: explain about the card class, check if assignment/copy are needed.
+//TODO: explain about the card class
 class Card {
 public:
     /*
@@ -25,40 +25,32 @@ public:
      *      A new instance of Card.
     */
 
-    Card(std::string cardName);
+    explicit Card(std::string cardName);
 
      /*
      * Handling the player's applyEncounter with the card:
      *
      * @param player - The player.
      * @return
-     *      void
+     *      voi
     */
      virtual void applyEncounter(Player& player) const = 0;
 
-    /*
-     * Prints the card info:
-     *
-     * @return
-     *      void
-    */
-    virtual void printInfo() const = 0 ;
 
     /*
      * Here we are explicitly telling the compiler to use the default methods
     */
-
+    std::string getName() const;
+    Card(const Card&) = default;
     ~Card() = default;
-    Card(const Card&) = delete;
-    Card& operator=(const Card& other) = delete;
+    Card& operator=(const Card& other) = default;
 
-    void getInfoStream(std::ostream& outStream) const;
-    virtual void getCardDetails(std::ostream& outStream) const = 0; //TODO: IMPLEMENT FOR ALL CARDS
+    virtual void getInfoStream(std::ostream &outStream) const;
 
 private:
     std::string m_cardName;
-};
 
-std::ostream& operator<<(std::ostream& outStream, const Card &card);
+
+};
 
 #endif //MTMCHKIN_CARD_H
