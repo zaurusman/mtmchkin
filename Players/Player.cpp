@@ -40,7 +40,13 @@ void Player::buff(int increment)
         m_force += increment;
     }
 }
-
+void Player::unBuff(int decrease)
+{
+    if (decrease >=0 )
+    {
+        m_force += decrease;
+    }
+}
 void Player::heal(int increment)
 {
     if (increment >=0 )
@@ -114,8 +120,12 @@ std::string Player::getName() const
     return m_name;
 }
 
-int Player::getcoins() const
+int Player::getCoins() const
 {
     return m_coins;
 }
 
+int Player::getHP() const
+{
+    return m_HP;
+}

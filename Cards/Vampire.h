@@ -6,18 +6,17 @@
 #define MTMCHKIN_VAMPIRE_H
 #include "BattleCard.h"
 
-#define VAMPIREFORCE 10
-#define VAMPIRELOOT 2
-#define VAMPIRELOSS 10
-
 class Vampire : public BattleCard{
 public:
     Vampire();
     ~Vampire()=default;
+    void applyEncounter(Player &player) const override;
 private:
     static const int VAMPIRE_FORCE =10;
     static const int VAMPIRE_LOOT = 2;
     static const int VAMPIRE_LOSS = 10;
+    static const int VAMPIRE_UNBUFF = 1;
+
 };
 
 

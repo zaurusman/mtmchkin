@@ -14,6 +14,7 @@
 
 class Wizard : public Player {
 
+public:
     Wizard(std::string name);
 
     void heal(int increment) override;

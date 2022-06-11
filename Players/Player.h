@@ -115,7 +115,9 @@ public:
     virtual std::string getJob() const = 0;
 
     std::string getName() const;
-    int getcoins() const;
+    int getCoins() const;
+    int getHP() const;
+    void unBuff(int decrease);
 
     Player(const Player&) = default;
     ~Player() = default;
@@ -141,6 +143,7 @@ private:
     int m_maxHP;
     int m_HP;
     int m_coins;
+
 
 
 };

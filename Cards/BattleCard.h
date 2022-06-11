@@ -14,12 +14,15 @@ public:
     BattleCard(int force, int loot, int loss, std::string name);
     ~BattleCard()=default;
     void getInfoStream(std::ostream &outStream) const override;
+    void applyEncounter(Player &player) const override;
 protected:
     static const int INFINITE_DAMAGE = -1;
 private:
     int m_force;
     int m_loot;
     int m_loss;
+
+
 };
 
 

@@ -1,6 +1,24 @@
 #ifndef MTMCHKIN_H_
 #define MTMCHKIN_H_
 
+
+#include <string>
+#include <fstream>
+#include <queue>
+#include <memory>
+#include "Cards/Card.h"
+#include <Cards/Dragon.h>
+#include <Cards/Barfight.h>
+#include <Cards/Fairy.h>
+#include <Cards/Goblin.h>
+#include <Cards/Merchant.h>
+#include <Cards/Pitfall.h>
+#include <Cards/Treasure.h>
+#include <Cards/Vampire.h>
+
+#include "Players/Player.h"
+
+
 class Mtmchkin{
 
 public:
@@ -46,6 +64,20 @@ public:
     *          int - number of rounds played
     */
     int getNumberOfRounds() const;
+
+
+
+    std::shared_ptr<Card> createCardByName(std::string name) const;
+    std::shared_ptr<Player> createPlayerByJob(std::string nameJob) const;
+private:
+    static const int BUFFER = 256;
+    static const int MAX_TEAM_SIZE = 6;
+    static const int MIN_TEAM_SIZE = 2;
+
+    std::queue<std::shared_ptr<Card>> m_deck;
+    std::queue<std::shared_ptr<Player>> m_players;
+
+
 };
 
 

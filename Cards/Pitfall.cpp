@@ -8,7 +8,8 @@ Pitfall::Pitfall():EventCard("Pitfall"){}
 void Pitfall::applyEncounter(Player& player) const
 {
     Rogue* testPlayer = dynamic_cast<Rogue*>(&player);
-    if (testPlayer == nullptr){
+    if (testPlayer == nullptr)
+    {
         player.damage(Pitfall::DAMAGE);
         printPitfallMessage(false);
     }

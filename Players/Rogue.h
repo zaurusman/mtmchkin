@@ -14,6 +14,7 @@
 
 class Rogue : public Player {
 
+public:
     Rogue(std::string name);
 
     void addCoins(int increment) override;

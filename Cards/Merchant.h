@@ -14,11 +14,6 @@ public:
 
     Merchant();
     ~Merchant() = default;
-
-    void printInfo() const override;
-
-    void printInfo(Player &player) const;
-
     void applyEncounter(Player &player) const;
 private:
     static const int DONT_BUY = 0;

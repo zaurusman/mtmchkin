@@ -7,34 +7,32 @@
 Merchant::Merchant():Card("Merchant")
 {}
 
-void Merchant::printInfo() const //TODO: change it
-{}
 
-void Merchant::applyEncounter(Player &player)
+void Merchant::applyEncounter(Player &player) const
 {
     printMerchantInitialMessageForInteractiveEncounter(std::cout,player.getName(),player.getcoins());
-    int desicion;
-    bool validInput = false;
-    while(!validInput) {
-        if (validInput)
-        {
-            printMerchantInsufficientCoins(std::cout);
-        }
-        std::cin >> desicion;//TODO: try catch this
+    int decision=-1;
+    while(decision==-1)
+    {
+        std::cin >> decision;//TODO: try catch this, the file says to use getLine - check about it 
 
-        if (desicion == BUY_POTION&&player.pay(POTION_PRICE))
+        if (decision == BUY_POTION&&player.pay(POTION_PRICE))
         {
             player.heal(1);
-            validInput = true;
+            continue;
         }
-        if (desicion == BUY_BUFF&&player.pay(BUFF_PRICE))
+        if (decision == BUY_BUFF&&player.pay(BUFF_PRICE))
         {
             player.buff(1);
-            validInput = true;
+            continue;
         }
-
+        if(decision==0) {
+            continue;
+        }
+        decision =-1;
+        printMerchantInsufficientCoins(std::cout);
     }
-    printMerchantSummary(std::cout,player.getName(),DONT_BUY,0);//TODO: change this
+    printMerchantSummary(std::cout,player.getName(),decision,POTION_PRICE*decision);
 }
 
 
