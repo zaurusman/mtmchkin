@@ -5,8 +5,13 @@
 #ifndef MTMCHKIN_EXCEPTION_H
 #define MTMCHKIN_EXCEPTION_H
 
-class InvalidName : public std::length_error{
+class InvalidName : public std::logic_error{
 public:
-    InvalidName(): std::length_error("Invalid Name Length.") {}
+    InvalidName(): std::logic_error("Invalid Name.")    {}
+};
+
+class InvalidClass :public std::logic_error{
+public:
+    InvalidClass(): std::logic_error("Invalid Class") {}
 };
 #endif //MTMCHKIN_EXCEPTION_H

@@ -17,7 +17,7 @@ Mtmchkin::Mtmchkin(std::string fileName)
     while (cardDeckFile.getline(line, sizeof(line)))
     {
         //TODO:check input
-        m_deck.push(createCardByName(line));
+        m_deck.push_front(createCardByName(line));
     }
     printEnterTeamSizeMessage();
     bool isValidSize = false;
@@ -40,67 +40,76 @@ Mtmchkin::Mtmchkin(std::string fileName)
     for (int i = 0; i < teamSize; i++)
     {
         printInsertPlayerMessage();
-        //TODO::check input
+        //TODO::check inputs
         std::cin >> nameJob;
-        m_players.push(createPlayerByJob(nameJob));
+        try {
+            m_players.push_front(createPlayerByJob(nameJob));
+        }
+        catch(const InvalidName)
+        {
+            printInvalidName();
+            i--;
+        }
+        catch(const InvalidClass)
+        {
+            printInvalidClass();
+            i--;
+        }
     }
 
 }
-std::shared_ptr<Card> Mtmchkin::createCardByName(std::string name) const
+std::unique_ptr<Card> Mtmchkin::createCardByName(std::string name)
 {
 
     if(name == "Barfight")
     {
-        return std::shared_ptr<Card>(new Barfight());
+        return std::unique_ptr<Card>(new Barfight());
     }
     if(name == "Dragon")
     {
-        return std::shared_ptr<Card>(new Dragon());
+        return std::unique_ptr<Card>(new Dragon());
     }
     if(name == "Fairy")
     {
-        return std::shared_ptr<Card>(new Fairy());
+        return std::unique_ptr<Card>(new Fairy());
     }
     if(name == "Goblin")
     {
-        return std::shared_ptr<Card>(new Goblin());
+        return std::unique_ptr<Card>(new Goblin());
     }
     if(name == "Merchant")
     {
-        return std::shared_ptr<Card>(new Merchant());
+        return std::unique_ptr<Card>(new Merchant());
     }
     if(name == "Pitfall")
     {
-        return std::shared_ptr<Card>(new Pitfall());
+        return std::unique_ptr<Card>(new Pitfall());
     }
     if(name == "Treasure")
     {
-        return std::shared_ptr<Card>(new Treasure());
+        return std::unique_ptr<Card>(new Treasure());
     }
     if(name == "Vampire")
     {
-        return std::shared_ptr<Card>(new Vampire());
+        return std::unique_ptr<Card>(new Vampire());
     }
 }
 
-std::shared_ptr<Player> createPlayerByJob(std::string nameJob)
+std::unique_ptr<Player> createPlayerByJob(std::string nameJob)
 {
     //TODO:exceptions 
     std::string name = nameJob.substr(0, nameJob.find(" "));
     std::string job = nameJob.substr(name.length()+1);
-    if (job == "Fighter")
-    {
-        return std::shared_ptr<Player>(new Fighter(name));
+    if (job == "Fighter") {
+        return std::unique_ptr<Player>(new Fighter(name));
     }
-    if (job == "Rogue")
-    {
-        return std::shared_ptr<Player>(new Rogue(name));
+    if (job == "Rogue") {
+        return std::unique_ptr<Player>(new Rogue(name));
     }
-    if (job == "Wizard")
-    {
-        return std::shared_ptr<Player>(new Wizard(name));
+    if (job == "Wizard") {
+        return std::unique_ptr<Player>(new Wizard(name));
     } else
     {
-
+        throw InvalidClass();
     }
 }

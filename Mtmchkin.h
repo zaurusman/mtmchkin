@@ -67,16 +67,15 @@ public:
 
 
 
-    std::shared_ptr<Card> createCardByName(std::string name) const;
-    std::shared_ptr<Player> createPlayerByJob(std::string nameJob) const;
+    static std::unique_ptr<Card> createCardByName(std::string name);
+    static std::unique_ptr<Player> createPlayerByJob(std::string nameJob);
 private:
     static const int BUFFER = 256;
     static const int MAX_TEAM_SIZE = 6;
     static const int MIN_TEAM_SIZE = 2;
 
-    std::queue<std::shared_ptr<Card>> m_deck;
-    std::queue<std::shared_ptr<Player>> m_players;
-
+    std::deque<std::unique_ptr<Card>> m_deck;
+    std::deque<std::unique_ptr<Player>> m_players;
 
 };
 

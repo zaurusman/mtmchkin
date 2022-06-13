@@ -14,7 +14,8 @@ Player::Player(std::string name) :
     m_coins(Player::DEFAULT_COINS)
 {
     int length = name.length();
-    if(length > 15){
+    if(!isValidName(name))
+    {
         throw InvalidName();
     }
     m_name = name;
@@ -128,4 +129,13 @@ int Player::getCoins() const
 int Player::getHP() const
 {
     return m_HP;
+}
+static bool isValidName(std::string name)
+{
+    if(name.length()>15)
+    {
+        return false;
+    }
+    std::string criteria("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXY");
+    return (std::string::npos == name.find_first_not_of(criteria));
 }
