@@ -174,6 +174,15 @@ int Mtmchkin::getNumberOfRounds() const
     return (m_roundCount-1);
 }
 
+bool Mtmchkin::isGameOver() const
+{
+    if(m_activePlayers.size()==0)
+    {
+        //TODO:print leaderboard
+        return true;
+    }
+    return false;
+}
 void Mtmchkin::printLeaderboards() const{
     int rank = 0;
     for (const std::unique_ptr<const Player>& player : m_winners){
