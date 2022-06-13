@@ -1,4 +1,3 @@
-
 #ifndef CPP_UTIL_H
 #define CPP_UTIL_H
 
@@ -17,7 +16,6 @@
 /*
  * Prints the details of the player:
  * Tip : Needed for the leaderBoard method (adjusted to print after the ranking section). 
-
  * @param os - The ostream.
  * @param name - The name of the player.
  * @param job - The job class of the player.
@@ -35,7 +33,6 @@ void printPlayerDetails(std::ostream &os, const std::string &name, const std::st
 
 /*
  * Prints the details of a general card:
-
  * @param os - The ostream.
  * @param name - The name of the card.
  * @return
@@ -46,7 +43,6 @@ void printCardDetails(std::ostream &os, const std::string &name);
 
 /*
  * Prints the final line that seperates messages:
-
  * @param os - The ostream.
  * @return
  *      void
@@ -74,7 +70,6 @@ void printMerchantInsufficientCoins(std::ostream &os);
 
 /*
  * Prints the details of a monster card:
-
  * @param os - The ostream.
  * @param force - The monster's force.
  * @param damage - The monster's damage.
@@ -150,7 +145,6 @@ void printStartGameMessage();
 
 /*
  * Prints the details of a merchant card:
-
  * @return
  *      void
  */
@@ -158,7 +152,6 @@ void printInsertPlayerMessage();
 
 /*
  * Prints a message when entering an invalid Class name:
-
  * @return
  *      void
  */
@@ -166,7 +159,6 @@ void printInvalidClass();
 
 /*
  * Prints a message when entering an invalid player name:
-
  * @return
  *      void
  */
@@ -174,7 +166,6 @@ void printInvalidName();
 
 /*
  * Prints a message when entering an invalid input:
-
  * @return
  *      void
  */
@@ -183,7 +174,6 @@ void printInvalidInput();
 
 /*
  * Prints whose turn is it (used at the start of each player's turn):
-
  * @param name - The name of the player.
  * @return
  *      void
@@ -193,7 +183,6 @@ void printTurnStartMessage(const std::string &name);
 
 
 /* Prints info at the start of a round (used at the start of each round):
-
 * @param roundCount - A number indicated what round is it in the game at this stage of the game.
 * @return
 *      void
@@ -202,7 +191,6 @@ void printRoundStartMessage(int roundCount);
 
 /*
  * Prints info in case a player won in an encounter (Battle card):
-
  * @param playerName - The name of the player engaging in the encounter.
  * @param monsterName - The name of the monster engaging in the encounter.
  * @return
@@ -212,7 +200,6 @@ void printWinBattle(const std::string &playerName, const std::string &monsterNam
 
 /*
  * Prints info in case a player lost in an encounter (Battle card):
-
  * @param playerName - The name of the player engaging in the encounter.
  * @param monsterName - The name of the monster engaging in the encounter.
  * @param HP - The amount of HP the player has lost due to losing in this encounter.
@@ -223,7 +210,6 @@ void printLossBattle(const std::string &playerName, const std::string &monsterNa
 
 /*
  * Prints a message indicating the start of the LeaderBoard Ranking:
-
  * @return
  *      void
  */

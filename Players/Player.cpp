@@ -43,9 +43,9 @@ void Player::buff(int increment)
 }
 void Player::unBuff(int decrease)
 {
-    if (decrease >=0 )
+    if (decrease >=0 && m_force - decrease >= 0)
     {
-        m_force += decrease;
+        m_force -= decrease;
     }
 }
 void Player::heal(int increment)

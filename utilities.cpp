@@ -51,7 +51,7 @@ void printCardDetails(ostream &os, const string &name)
 void printEndOfCardDetails(ostream &os)
 {
     os << "-------------------------------" << std::endl;
-}  
+}
 
 void printMerchantInitialMessageForInteractiveEncounter(ostream &os, const string &playerName, int coins)
 {
@@ -72,7 +72,7 @@ void printMonsterDetails(ostream &os, int force, int damage, int coins, bool isD
     os << "Force: " << force << endl;
     if (isDragon)
         os << "Damage upon loss: " << "Infinite" << endl;
-    else        
+    else
         os << "Damage upon loss: " << damage << endl;
     os << "Coins: " << coins << endl;
 }
@@ -203,5 +203,3 @@ void printGameEndMessage()
 {
     cout << "The Game has ended!!!" << endl;
 }
-
-

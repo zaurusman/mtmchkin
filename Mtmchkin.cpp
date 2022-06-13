@@ -5,19 +5,26 @@
 
 #include "Mtmchkin.h"
 
-
-Mtmchkin::Mtmchkin(std::string fileName)
+//TODO: MAP
+Mtmchkin::Mtmchkin(std::string fileName):
+m_activePlayers(std::deque<std::unique_ptr<Player>>()),
+m_winners(std::deque<std::unique_ptr<const Player>>()),
+m_losers(std::deque<std::unique_ptr<const Player>>())
 {
     std::ifstream cardDeckFile(fileName);
     if(!cardDeckFile)
     {
-        //TODO: add exception
+        throw DeckFileNotFound();
     }
-    char line[BUFFER];
-    while (cardDeckFile.getline(line, sizeof(line)))
+    std::string line;
+    int lineNumber = 0;
+    while (getline(cardDeckFile, line))
     {
-        //TODO:check input
+        lineNumber++;
         m_deck.push_front(createCardByName(line));
+    }
+    if(lineNumber < MIN_DECK_SIZE){
+        throw DeckFileInvalidSize();
     }
     printEnterTeamSizeMessage();
     bool isValidSize = false;
@@ -43,7 +50,7 @@ Mtmchkin::Mtmchkin(std::string fileName)
         //TODO::check inputs
         std::cin >> nameJob;
         try {
-            m_players.push_front(createPlayerByJob(nameJob));
+            m_activePlayers.push_front(createPlayerByJob(nameJob));
         }
         catch(const InvalidName)
         {
@@ -58,7 +65,7 @@ Mtmchkin::Mtmchkin(std::string fileName)
     }
 
 }
-std::unique_ptr<Card> Mtmchkin::createCardByName(std::string name)
+std::unique_ptr<Card> Mtmchkin::createCardByName(std::string name, int line)
 {
 
     if(name == "Barfight")
@@ -93,6 +100,7 @@ std::unique_ptr<Card> Mtmchkin::createCardByName(std::string name)
     {
         return std::unique_ptr<Card>(new Vampire());
     }
+    throw DeckFileFormatError(line);
 }
 
 std::unique_ptr<Player> createPlayerByJob(std::string nameJob)
