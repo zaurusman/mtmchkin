@@ -70,8 +70,10 @@ public:
 
 private:
 
-    static std::unique_ptr<Card> createCardByName(std::string name, int line);
-    static std::unique_ptr<Player> createPlayerByJob(std::string nameJob);
+    static std::unique_ptr<Card> createCardByName(const std::string& name, int line);
+    static std::unique_ptr<Player> createPlayerByJob(const std::string& nameJob);
+
+    void printLeaderboards() const;
 
     static const int BUFFER = 256;
     static const int MAX_TEAM_SIZE = 6;

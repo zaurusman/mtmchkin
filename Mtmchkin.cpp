@@ -4,6 +4,7 @@
 
 
 #include "Mtmchkin.h"
+bool checkInputString(std::string line, int max, int min, int *teamSize);
 
 //TODO: MAP
 Mtmchkin::Mtmchkin(std::string fileName):
@@ -27,20 +28,18 @@ m_losers(std::deque<std::unique_ptr<const Player>>())
         throw DeckFileInvalidSize();
     }
     printEnterTeamSizeMessage();
-    bool isValidSize = false;
+    bool isInvalidSize = true;
     int teamSize;
-    while(!isValidSize)
+    while(isInvalidSize)
     {
-        //TODO: check input
-        std::cin>>teamSize;
-        std::cout<<std::endl;
-        if(teamSize<=MAX_TEAM_SIZE&teamSize>=MIN_TEAM_SIZE)
-        {
-            isValidSize = true;
-        }
-        else
-        {
+        line.clear();
+        std::cin>>line;
+        teamSize = std::stoi(line);
+        if(!checkInputString(line, MAX_TEAM_SIZE, MIN_TEAM_SIZE, &teamSize)){
             printInvalidTeamSize();
+        }
+        else{
+            isInvalidSize = false;
         }
     }
     std::string nameJob;
@@ -52,12 +51,12 @@ m_losers(std::deque<std::unique_ptr<const Player>>())
         try {
             m_activePlayers.push_front(createPlayerByJob(nameJob));
         }
-        catch(const InvalidName)
+        catch(const InvalidName& exception)
         {
             printInvalidName();
             i--;
         }
-        catch(const InvalidClass)
+        catch(const InvalidClass& exception)
         {
             printInvalidClass();
             i--;
@@ -65,7 +64,7 @@ m_losers(std::deque<std::unique_ptr<const Player>>())
     }
     m_roundCount = 1;
 }
-std::unique_ptr<Card> Mtmchkin::createCardByName(std::string name, int line)
+std::unique_ptr<Card> Mtmchkin::createCardByName(const std::string& name, int line)
 {
 
     if(name == "Barfight")
@@ -103,11 +102,11 @@ std::unique_ptr<Card> Mtmchkin::createCardByName(std::string name, int line)
     throw DeckFileFormatError(line);
 }
 
-std::unique_ptr<Player> createPlayerByJob(std::string nameJob)
+std::unique_ptr<Player> Mtmchkin::createPlayerByJob(const std::string& nameJob)
 {
     //TODO:exceptions 
     std::string name = nameJob.substr(0, nameJob.find(" "));
-    std::string job = nameJob.substr(name.length()+1);
+    std::string job = nameJob.substr(name.length()+1); //TODO:check if lengths are okay for string slicing
     if (job == "Fighter") {
         return std::unique_ptr<Player>(new Fighter(name));
     }
@@ -120,6 +119,28 @@ std::unique_ptr<Player> createPlayerByJob(std::string nameJob)
     {
         throw InvalidClass();
     }
+}
+
+bool checkInputString(std::string line, int max, int min, int *teamSize){
+    int afterDigitIndex;
+    std::string numberAsString;
+    try {
+        *teamSize = std::stoi(line);
+    }
+    catch (...){
+        return false;
+    }
+    if(*teamSize>max || *teamSize < min){
+        return false;
+    }
+    numberAsString = std::to_string(*teamSize);
+    afterDigitIndex = line.find(numberAsString) + numberAsString.length();
+    for (int i = afterDigitIndex; i<line.length() ; ++i) {
+        if (line[i] != ' '){
+            return false;
+        }
+    }
+    return true;
 }
 
 
@@ -136,11 +157,11 @@ void Mtmchkin::playRound()
         currentCard->applyEncounter(*currentPlayer);
         if(currentPlayer->isKnockedOut())
         {
-            m_losers.push_front(move(currentPlayer));
+            m_losers.push_back(move(currentPlayer));
         }
         else if(currentPlayer->getLevel()==WINNING_LEVEL)
         {
-            m_winners.push_front(move(currentPlayer));
+            m_winners.push_back(move(currentPlayer));
         } else
         {
             m_activePlayers.push_back(move(currentPlayer));
@@ -151,4 +172,13 @@ void Mtmchkin::playRound()
 int Mtmchkin::getNumberOfRounds() const
 {
     return (m_roundCount-1);
+}
+
+void Mtmchkin::printLeaderboards() const{
+    int rank = 0;
+    for (const std::unique_ptr<const Player>& player : m_winners){
+        i++;
+        printLeaderBoardStartMessage();
+        printPlayerLeaderBoard(rank, *player); //TODO: FIX (WHYYYYYYYYYYYYYYYYYYYYYYY)
+    }
 }
