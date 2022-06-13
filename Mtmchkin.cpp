@@ -146,9 +146,20 @@ void Mtmchkin::playRound()
             m_activePlayers.push_back(move(currentPlayer));
         }
         m_deck.push_back(move(currentCard));
+
     }
 }
 int Mtmchkin::getNumberOfRounds() const
 {
     return (m_roundCount-1);
+}
+
+bool Mtmchkin::isGameOver() const
+{
+    if(m_activePlayers.size()==0)
+    {
+        //TODO:print leaderboard
+        return true;
+    }
+    return false;
 }
