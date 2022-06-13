@@ -186,7 +186,7 @@ bool Mtmchkin::isGameOver() const
 void Mtmchkin::printLeaderboards() const{
     int rank = 0;
     for (const std::unique_ptr<const Player>& player : m_winners){
-        i++;
+        rank++;
         printLeaderBoardStartMessage();
         printPlayerLeaderBoard(rank, *player); //TODO: FIX (WHYYYYYYYYYYYYYYYYYYYYYYY)
     }
