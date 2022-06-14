@@ -2,7 +2,6 @@
 // Created by Yotam on 09/06/2022.
 //
 
-
 #include "Mtmchkin.h"
 bool checkInputString(std::string line, int max, int min, int *teamSize);
 
@@ -35,21 +34,21 @@ m_losers(std::deque<std::unique_ptr<const Player>>())
         line.clear();
         std::cin>>line;
         teamSize = std::stoi(line);
-        if(!checkInputString(line, MAX_TEAM_SIZE, MIN_TEAM_SIZE, &teamSize)){
+        if(teamSize > MAX_TEAM_SIZE || teamSize < MIN_TEAM_SIZE){
             printInvalidTeamSize();
         }
         else{
             isInvalidSize = false;
         }
     }
-    std::string nameJob;
+    std::string name, job;
     for (int i = 0; i < teamSize; i++)
     {
         printInsertPlayerMessage();
-        //TODO::check inputs
-        std::cin >> nameJob;
+        std::cin >> name;
+        std::cin >> job;
         try {
-            m_activePlayers.push_front(createPlayerByJob(nameJob));
+            m_activePlayers.push_front(createPlayerByJob(name, job));
         }
         catch(const InvalidName& exception)
         {
@@ -102,11 +101,9 @@ std::unique_ptr<Card> Mtmchkin::createCardByName(const std::string& name, int li
     throw DeckFileFormatError(line);
 }
 
-std::unique_ptr<Player> Mtmchkin::createPlayerByJob(const std::string& nameJob)
+std::unique_ptr<Player> Mtmchkin::createPlayerByJob(const std::string& name, const std::string& job)
 {
-    //TODO:exceptions 
-    std::string name = nameJob.substr(0, nameJob.find(" "));
-    std::string job = nameJob.substr(name.length()+1); //TODO:check if lengths are okay for string slicing
+
     if (job == "Fighter") {
         return std::unique_ptr<Player>(new Fighter(name));
     }
@@ -115,32 +112,8 @@ std::unique_ptr<Player> Mtmchkin::createPlayerByJob(const std::string& nameJob)
     }
     if (job == "Wizard") {
         return std::unique_ptr<Player>(new Wizard(name));
-    } else
-    {
-        throw InvalidClass();
     }
-}
-
-bool checkInputString(std::string line, int max, int min, int *teamSize){
-    int afterDigitIndex;
-    std::string numberAsString;
-    try {
-        *teamSize = std::stoi(line);
-    }
-    catch (...){
-        return false;
-    }
-    if(*teamSize>max || *teamSize < min){
-        return false;
-    }
-    numberAsString = std::to_string(*teamSize);
-    afterDigitIndex = line.find(numberAsString) + numberAsString.length();
-    for (int i = afterDigitIndex; i<line.length() ; ++i) {
-        if (line[i] != ' '){
-            return false;
-        }
-    }
-    return true;
+    throw InvalidClass();
 }
 
 
@@ -176,18 +149,27 @@ int Mtmchkin::getNumberOfRounds() const
 
 bool Mtmchkin::isGameOver() const
 {
-    if(m_activePlayers.size()==0)
+    if(m_activePlayers.empty())
     {
-        //TODO:print leaderboard
         return true;
     }
     return false;
 }
-void Mtmchkin::printLeaderboards() const{
+void Mtmchkin::printLeaderBoard() const {
     int rank = 0;
-    for (const std::unique_ptr<const Player>& player : m_winners){
+    for (std::unique_ptr<const Player> const &player : m_winners){
         rank++;
         printLeaderBoardStartMessage();
-        printPlayerLeaderBoard(rank, *player); //TODO: FIX (WHYYYYYYYYYYYYYYYYYYYYYYY)
+        printPlayerLeaderBoard(rank, *player);
+    }
+    for (std::unique_ptr<Player> const &player : m_activePlayers){
+        rank++;
+        printLeaderBoardStartMessage();
+        printPlayerLeaderBoard(rank, *player);
+    }
+    for (std::unique_ptr<const Player> const &player : m_losers){
+        rank++;
+        printLeaderBoardStartMessage();
+        printPlayerLeaderBoard(rank, *player);
     }
 }

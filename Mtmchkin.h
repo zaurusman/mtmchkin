@@ -66,14 +66,12 @@ public:
     int getNumberOfRounds() const;
 
 
-
-
 private:
 
     static std::unique_ptr<Card> createCardByName(const std::string& name, int line);
-    static std::unique_ptr<Player> createPlayerByJob(const std::string& nameJob);
+    static std::unique_ptr<Player> createPlayerByJob(const std::string& name, const std::string& job);
 
-    void printLeaderboards() const;
+
 
     static const int BUFFER = 256;
     static const int MAX_TEAM_SIZE = 6;

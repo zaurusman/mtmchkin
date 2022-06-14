@@ -40,7 +40,7 @@ public:
     /*
      * Here we are explicitly telling the compiler to use the default methods
     */
-    static std::string getName() const;
+    std::string getName() const;
     Card(const Card&) = default;
     ~Card() = default;
     Card& operator=(const Card& other) = default;
@@ -50,7 +50,8 @@ public:
 private:
     std::string m_cardName;
 
-
 };
+
+std::ostream& operator<<(std::ostream& outStream, const Card &card);
 
 #endif //MTMCHKIN_CARD_H

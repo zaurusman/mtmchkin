@@ -5,7 +5,7 @@
 #define EX2_PLAYER_H
 
 #include <string>
-#include "utilities.h"
+//#include "utilities.h"
 
 
 
@@ -118,8 +118,6 @@ public:
     int getCoins() const;
     int getHP() const;
     void unBuff(int decrease);
-    static bool isValidName(std::string name);
-
     Player(const Player&) = default;
     ~Player() = default;
     Player& operator=(const Player& other) = default;
