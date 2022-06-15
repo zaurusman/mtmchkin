@@ -129,7 +129,7 @@ bool cardsPrintsTest()
     Pitfall moedB;
     Treasure factor;
     Vampire dracula;
-    cout << junta << std::endl << mushu << std::endl << alizaMalek   
+    cout << junta << std::endl << mushu << std::endl << alizaMalek
                     << std::endl << goblin  << std::endl << pizzaHut
                     << std::endl << moedB  << std::endl << factor
                     << std::endl << dracula;

@@ -44,7 +44,6 @@ public:
     Card(const Card&) = default;
     ~Card() = default;
     Card& operator=(const Card& other) = default;
-
     virtual void getInfoStream(std::ostream &outStream) const;
 
 private:

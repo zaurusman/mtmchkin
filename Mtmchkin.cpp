@@ -11,6 +11,7 @@ m_activePlayers(std::deque<std::unique_ptr<Player>>()),
 m_winners(std::deque<std::unique_ptr<const Player>>()),
 m_losers(std::deque<std::unique_ptr<const Player>>())
 {
+    printStartGameMessage();
     std::ifstream cardDeckFile(fileName);
     if(!cardDeckFile)
     {
@@ -21,7 +22,7 @@ m_losers(std::deque<std::unique_ptr<const Player>>())
     while (getline(cardDeckFile, line))
     {
         lineNumber++;
-        m_deck.push_front(createCardByName(line,lineNumber));
+        m_deck.push_back(createCardByName(line,lineNumber));
     }
     if(lineNumber < MIN_DECK_SIZE){
         throw DeckFileInvalidSize();
@@ -48,7 +49,7 @@ m_losers(std::deque<std::unique_ptr<const Player>>())
         std::cin >> name;
         std::cin >> job;
         try {
-            m_activePlayers.push_front(createPlayerByJob(name, job));
+            m_activePlayers.push_back(createPlayerByJob(name, job));
         }
         catch(const InvalidName& exception)
         {
@@ -120,7 +121,8 @@ std::unique_ptr<Player> Mtmchkin::createPlayerByJob(const std::string& name, con
 void Mtmchkin::playRound()
 {
     printRoundStartMessage(m_roundCount);
-    for (int i = 0; i < m_activePlayers.size(); ++i)
+    int teamSize = m_activePlayers.size();
+    for (int i = 0; i < teamSize ; ++i)
     {
         std::unique_ptr<Player> currentPlayer = move(m_activePlayers.front());
         m_activePlayers.pop_front();
@@ -130,17 +132,22 @@ void Mtmchkin::playRound()
         currentCard->applyEncounter(*currentPlayer);
         if(currentPlayer->isKnockedOut())
         {
-            m_losers.push_back(move(currentPlayer));
+            m_losers.push_front(move(currentPlayer));
         }
         else if(currentPlayer->getLevel()==WINNING_LEVEL)
         {
-            m_winners.push_back(move(currentPlayer));
+            m_winners.push_front(move(currentPlayer));
         } else
         {
             m_activePlayers.push_back(move(currentPlayer));
         }
         m_deck.push_back(move(currentCard));
     }
+    if(isGameOver())
+    {
+        printGameEndMessage();
+    }
+    m_roundCount++;
 }
 int Mtmchkin::getNumberOfRounds() const
 {
@@ -155,21 +162,20 @@ bool Mtmchkin::isGameOver() const
     }
     return false;
 }
+
 void Mtmchkin::printLeaderBoard() const {
     int rank = 0;
+    printLeaderBoardStartMessage();
     for (std::unique_ptr<const Player> const &player : m_winners){
         rank++;
-        printLeaderBoardStartMessage();
         printPlayerLeaderBoard(rank, *player);
     }
     for (std::unique_ptr<Player> const &player : m_activePlayers){
         rank++;
-        printLeaderBoardStartMessage();
         printPlayerLeaderBoard(rank, *player);
     }
     for (std::unique_ptr<const Player> const &player : m_losers){
         rank++;
-        printLeaderBoardStartMessage();
         printPlayerLeaderBoard(rank, *player);
     }
 }

@@ -24,8 +24,9 @@ void BattleCard::applyEncounter(Player& player) const
         if(m_loss==INFINITE_DAMAGE)//is Dragon
         {
             player.damage(player.getHP());
-        } else
-        player.damage(m_loss);
+        } else {
+            player.damage(m_loss);
+        }
     }
 }
 

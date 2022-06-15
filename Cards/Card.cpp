@@ -14,7 +14,9 @@ void Card::getInfoStream(std::ostream& outStream) const{
 std::string Card::getName() const{
     return m_cardName;
 }
-std::ostream& operator<<(std::ostream& outStream, const Card &card){
+
+std::ostream& operator<<(std::ostream& outStream, const Card &card)
+{
     card.getInfoStream(outStream);
     return outStream;
 }
