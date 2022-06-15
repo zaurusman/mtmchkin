@@ -26,9 +26,7 @@ public:
     /*
      * C'tor of Player class
      *
-     * @param name - The name of the player.
-     * @param force - The force of the player (default = DEFAULT_FORCE).
-     * @param maxHP - The max health points (default = DEFAULT_MAX_HP).
+     * @param name - The name of the player, must be composed of less than 16 english characters.
      * @return
      *      A new instance of Player.
     */
@@ -56,13 +54,13 @@ public:
     */
     void buff(int increment);
 
-    virtual /*
+    /*
      * increase the HP of the player by a given amount (up to maxHP).
      * @param increment - the amount to add to HP.
      * @return
      *      void
     */
-    void heal(int increment);
+    virtual void heal(int increment);
 
     /*
      * decrease the HP of the player by a given amount.
@@ -107,17 +105,50 @@ public:
     */
     virtual int getAttackStrength()const;
 
+
+    /*
+     * updates a given ostream with player related info.
+     * @return
+     *      the updated ostream.
+    */
     void getInfoStream(std::ostream& outStream) const;
+
+
     /* gives the current class of the player,
     * @return
     *      player's class.
     */
     virtual std::string getJob() const = 0;
 
+
+    /* getter for the player's name.
+    * @return
+    *      player's name.
+    */
     std::string getName() const;
+
+    /* getter for the player's coins.
+    * @return
+    *      player's coins.
+    */
     int getCoins() const;
+
+    /* getter for the player's HP.
+    * @return
+    *      player's HP.
+    */
     int getHP() const;
+
+    /* decreases the player's strength by argument.
+     * @param decrease - amount to decrease, must be a natural number;
+    * @return
+    *      player's name.
+    */
     void unBuff(int decrease);
+
+    /*
+     * using default d'tor, cpy c'tor and assignment operator.
+     */
     Player(const Player&) = default;
     ~Player() = default;
     Player& operator=(const Player& other) = default;
@@ -128,6 +159,9 @@ private:
      *  DEFAULT_MAX_HP - default value for max hp.
      *  DEFAULT_FORCE - default value for force.
      *  MAX_LEVEL - the maximum level that can be reached.
+     *  DEFAULT_COINS - default start coins
+     *  DEFAULT_START_LEVEL - default start level
+     *  MAX_LEVEL - max level that can be reached.
      * */
 
     static const int DEFAULT_MAX_HP = 100;
@@ -147,6 +181,9 @@ private:
 
 };
 
+/*
+ * overloading assignment operator to print player related info.
+ */
 std::ostream& operator<<(std::ostream& outStream, const Player& player);
 
 

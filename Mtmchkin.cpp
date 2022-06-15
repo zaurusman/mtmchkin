@@ -43,30 +43,31 @@ m_losers(std::deque<std::unique_ptr<const Player>>())
         }
     }
     std::string name, job;
+    bool parameterOkay = false;
     for (int i = 0; i < teamSize; i++)
     {
         printInsertPlayerMessage();
-        std::cin >> name;
-        std::cin >> job;
-        try {
-            m_activePlayers.push_back(createPlayerByJob(name, job));
+        while(!parameterOkay) {
+            std::cin >> name;
+            std::cin >> job;
+            try {
+                m_activePlayers.push_back(createPlayerByJob(name, job));
+                parameterOkay = true;
+            }
+            catch (const InvalidName &exception) {
+                printInvalidName();
+            }
+            catch (const InvalidClass &exception) {
+                printInvalidClass();
+            }
         }
-        catch(const InvalidName& exception)
-        {
-            printInvalidName();
-            i--;
-        }
-        catch(const InvalidClass& exception)
-        {
-            printInvalidClass();
-            i--;
-        }
+        parameterOkay = false;
     }
     m_roundCount = 1;
 }
+
 std::unique_ptr<Card> Mtmchkin::createCardByName(const std::string& name, int line)
 {
-
     if(name == "Barfight")
     {
         return std::unique_ptr<Card>(new Barfight());

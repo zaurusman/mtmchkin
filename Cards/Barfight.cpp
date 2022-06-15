@@ -9,10 +9,12 @@ Barfight::Barfight():EventCard("Barfight") {}
 void Barfight::applyEncounter(Player& player) const
 {
     Fighter* testPlayer = dynamic_cast<Fighter*>(&player);
-    if (testPlayer != nullptr){
+    if (testPlayer == nullptr){
         player.damage(Barfight::DAMAGE);
         printBarfightMessage(false);
     }
-    printBarfightMessage(true);
+    else {
+        printBarfightMessage(true);
+    }
 }
 

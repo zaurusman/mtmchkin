@@ -13,5 +13,7 @@ void Fairy::applyEncounter(Player& player) const
         player.heal(Fairy::HEAL_VALUE);
         printFairyMessage(true);
     }
-    printFairyMessage(false);
+    else {
+        printFairyMessage(false);
+    }
 }

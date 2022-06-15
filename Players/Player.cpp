@@ -38,16 +38,19 @@ int Player::getLevel() const
 
 void Player::buff(int increment)
 {
-    if (increment >=0 )
+    if (increment >=0)
     {
         m_force += increment;
     }
 }
 void Player::unBuff(int decrease)
 {
-    if (decrease >=0 && m_force - decrease >= 0)
+    if (decrease >=0)
     {
         m_force -= decrease;
+        if(m_force <= 0){
+            m_force = 0;
+        }
     }
 }
 void Player::heal(int increment)
