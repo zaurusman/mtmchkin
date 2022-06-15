@@ -10,8 +10,18 @@
 class Dragon : public BattleCard {
 
 public:
+    /*
+     * C'tor for Dragon
+     * returns - a new instance of Dragon
+     */
     Dragon();
+
+    /*
+     * Here we are explicitly telling the compiler to use the default methods
+    */
     ~Dragon() = default;
+    Dragon(const Dragon &other) = default;
+    Dragon& operator=(const Dragon &other) = default;
 
     private:
     static const int DRAGON_FORCE = 25;

@@ -183,6 +183,7 @@ private:
 
 /*
  * overloading assignment operator to print player related info.
+ * returns updated stream to allow chaining.
  */
 std::ostream& operator<<(std::ostream& outStream, const Player& player);
 

@@ -10,10 +10,27 @@
 
 class Pitfall : public EventCard{
 public:
-
+    /*
+     * C'tor for Pitfall card.
+     * returns - a new instance of Pitfall
+     */
     Pitfall();
-    ~Pitfall() = default;
+
+    /*
+     * applies the encounter for the Pitfall card:
+     * all classes other than rogue are damaged by 10 points.
+     * param player - the player that invoked the card.
+     * returns
+     *          void
+     */
     void applyEncounter(Player& player) const override;
+
+    /*
+     * Here we are explicitly telling the compiler to use the default methods
+    */
+    ~Pitfall() = default;
+    Pitfall(const Pitfall& other) = default;
+    Pitfall& operator=(const Pitfall& other) = default;
 
 private:
     static const int DAMAGE = EventCard::DEFAULT_EVENT_VALUE;

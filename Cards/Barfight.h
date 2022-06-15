@@ -10,10 +10,27 @@
 
 class Barfight : public EventCard{
 public:
-
+    /*
+     * C'tor for Barfight card.
+     * returns - a new instance of Barfight
+     */
     Barfight();
-    ~Barfight() = default;
+
+    /*
+     * applies the encounter for the Barfight card:
+     * all classes other than fighter are damaged by 10 points.
+     * param player - the player that invoked the card.
+     * returns
+     *          void
+     */
     void applyEncounter(Player& player) const override;
+
+    /*
+     * Here we are explicitly telling the compiler to use the default methods
+    */
+    ~Barfight() = default;
+    Barfight(const Barfight& other) = default;
+    Barfight& operator=(const Barfight& other) = default;
 private:
     static const int DAMAGE = EventCard::DEFAULT_EVENT_VALUE;
 };

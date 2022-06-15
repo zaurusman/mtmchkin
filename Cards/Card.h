@@ -19,8 +19,7 @@ public:
     /*
      * C'tor of Card class
      *
-     * @param type - The type of the card.
-     * @param stats - The numeral stats of the card.
+     * @param cardName - The type of the card.
      * @return
      *      A new instance of Card.
     */
@@ -28,29 +27,43 @@ public:
     explicit Card(std::string cardName);
 
      /*
-     * Handling the player's applyEncounter with the card:
+     * applies the card related encounter:
      *
      * @param player - The player.
      * @return
-     *      voi
+     *      void
     */
      virtual void applyEncounter(Player& player) const = 0;
 
 
+     /*
+      * getter for the card's name
+      * returns the card's name
+      */
+    std::string getName() const;
+
+    /*
+     * updates a given ostream with card related info.
+     * @return
+     *      the updated ostream.
+    */
+    virtual void getInfoStream(std::ostream &outStream) const;
+
     /*
      * Here we are explicitly telling the compiler to use the default methods
     */
-    std::string getName() const;
     Card(const Card&) = default;
     ~Card() = default;
     Card& operator=(const Card& other) = default;
-    virtual void getInfoStream(std::ostream &outStream) const;
-
 private:
     std::string m_cardName;
 
 };
 
+/*
+ * overloading assignment operator to print card related info.
+ * returns updated stream to allow chaining.
+ */
 std::ostream& operator<<(std::ostream& outStream, const Card &card);
 
 #endif //MTMCHKIN_CARD_H
