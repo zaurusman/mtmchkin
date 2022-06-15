@@ -136,7 +136,7 @@ void Mtmchkin::playRound()
         }
         else if(currentPlayer->getLevel()==WINNING_LEVEL)
         {
-            m_winners.push_front(move(currentPlayer));
+            m_winners.push_back(move(currentPlayer));
         } else
         {
             m_activePlayers.push_back(move(currentPlayer));
