@@ -15,11 +15,36 @@
 class Wizard : public Player {
 
 public:
+    /*
+     * C'tor for Wizard class:
+     *
+     * @param name - the name of the player
+     *return
+     *      a new instance of Wizard
+     */
     Wizard(std::string name);
 
+    /*
+     * adds to the Wizard's HP, calculated as mentioned above.
+     *
+     *return
+     *      void
+     */
     void heal(int increment) override;
 
+    /*
+     * getter for the Wizard's job (Wizard)
+     * returns
+     *      the string "Wizard"
+     */
     std::string getJob() const override;
+
+    /*
+    * Here we are explicitly telling the compiler to use the default methods
+    */
+    ~Wizard()=default;
+    Wizard(const Wizard &other) = default;
+    Wizard& operator=(const Wizard &other) = default;
 };
 
 

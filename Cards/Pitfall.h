@@ -19,7 +19,7 @@ public:
     /*
      * applies the encounter for the Pitfall card:
      * all classes other than rogue are damaged by 10 points.
-     * param player - the player that invoked the card.
+     * @param player - the player who activated the card.
      * returns
      *          void
      */

@@ -28,28 +28,28 @@ m_losers(std::deque<std::unique_ptr<const Player>>())
         throw DeckFileInvalidSize();
     }
     printEnterTeamSizeMessage();
-    bool isInvalidSize = true;
+    bool parameterOkay = false;
     int teamSize;
-    while(isInvalidSize)
+    while(!parameterOkay)
     {
         line.clear();
-        std::cin>>line;
+        getline(std::cin, line);
         teamSize = std::stoi(line);
         if(teamSize > MAX_TEAM_SIZE || teamSize < MIN_TEAM_SIZE){
             printInvalidTeamSize();
         }
         else{
-            isInvalidSize = false;
+            parameterOkay = true;
         }
     }
+    parameterOkay = false;
     std::string name, job;
-    bool parameterOkay = false;
     for (int i = 0; i < teamSize; i++)
     {
         printInsertPlayerMessage();
         while(!parameterOkay) {
-            std::cin >> name;
-            std::cin >> job;
+            getline(std::cin, name, NAME_DELIMITER);
+            getline(std::cin, job, JOB_DELIMITER);
             try {
                 m_activePlayers.push_back(createPlayerByJob(name, job));
                 parameterOkay = true;

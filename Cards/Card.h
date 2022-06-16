@@ -29,7 +29,7 @@ public:
      /*
      * applies the card related encounter:
      *
-     * @param player - The player.
+     * @param player - the player who activated the card.
      * @return
      *      void
     */

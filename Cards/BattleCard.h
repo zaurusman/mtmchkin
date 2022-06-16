@@ -33,7 +33,7 @@ public:
     /*
      * applies the encounter for the BattleCard:
      * if the player has enough force he levels up and gets the loot, else he losses health.
-     * param player - the player that invoked the card.
+     * @param player - the player who activated the card.
      * returns
      *          void
      */

@@ -8,9 +8,28 @@
 
 class Vampire : public BattleCard{
 public:
+    /*
+     * C'tor for Vampire
+     * returns - a new instance of Vampire
+     */
     Vampire();
-    ~Vampire()=default;
+
+    /*
+     *
+     * applies the encounter for the Vampire Card
+     * if the player has enough force he levels up and gets the loot, else he loses health and force.
+     * @param player - the player who activated the card.
+     * returns
+     *          void
+     */
     void applyEncounter(Player &player) const override;
+
+    /*
+     * Here we are explicitly telling the compiler to use the default methods
+    */
+    ~Vampire()=default;
+    Vampire(const Vampire &other) = default;
+    Vampire& operator=(const Vampire &other) = default;
 private:
     static const int VAMPIRE_FORCE =10;
     static const int VAMPIRE_LOOT = 2;

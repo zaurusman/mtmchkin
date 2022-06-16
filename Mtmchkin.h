@@ -72,7 +72,8 @@ private:
 
 
 
-    static const int BUFFER = 256;
+    static const char NAME_DELIMITER = ' ';
+    static const char JOB_DELIMITER = '\n';
     static const int MAX_TEAM_SIZE = 6;
     static const int MIN_TEAM_SIZE = 2;
     static const int MIN_DECK_SIZE = 5;

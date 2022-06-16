@@ -15,10 +15,37 @@
 class Rogue : public Player {
 
 public:
+    /*
+     * C'tor for Rogue class:
+     *
+     * @param name - the name of the player
+     *return
+     *      a new instance of Rogue
+     */
     Rogue(std::string name);
 
+
+    /*
+     * adds to the Rogue's coins, calculated as mentioned above.
+     *
+     *return
+     *      void
+     */
     void addCoins(int increment) override;
+
+    /*
+     * getter for the Rogue's job (Rogue)
+     * returns
+     *      the string "Rogue"
+     */
     std::string getJob() const override;
+
+    /*
+     * Here we are explicitly telling the compiler to use the default methods
+    */
+    ~Rogue()=default;
+    Rogue(const Rogue &other) = default;
+    Rogue& operator=(const Rogue &other) = default;
 };
 
 

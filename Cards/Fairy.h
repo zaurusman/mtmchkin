@@ -19,7 +19,7 @@ public:
     /*
      * applies the encounter for the fairy card:
      * if the player is a wizard he is healed by 10 points.
-     * param player - the player that invoked the card.
+     * @param player - the player who activated the card.
      * returns
      *          void
      */
