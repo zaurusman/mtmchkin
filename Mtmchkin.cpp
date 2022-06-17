@@ -21,28 +21,13 @@ m_losers(std::deque<std::unique_ptr<const Player>>())
     int lineNumber = 0;
     while (getline(cardDeckFile, line))
     {
-        lineNumber++;
-        m_deck.push_back(createCardByName(line,lineNumber));
+        m_deck.push_back(createCardByName(line,++lineNumber));
     }
     if(lineNumber < MIN_DECK_SIZE){
         throw DeckFileInvalidSize();
     }
-    printEnterTeamSizeMessage();
+    int teamSize = initTeamSize(line);
     bool parameterOkay = false;
-    int teamSize;
-    while(!parameterOkay)
-    {
-        line.clear();
-        getline(std::cin, line);
-        teamSize = std::stoi(line);
-        if(teamSize > MAX_TEAM_SIZE || teamSize < MIN_TEAM_SIZE){
-            printInvalidTeamSize();
-        }
-        else{
-            parameterOkay = true;
-        }
-    }
-    parameterOkay = false;
     std::string name, job;
     for (int i = 0; i < teamSize; i++)
     {
@@ -179,4 +164,24 @@ void Mtmchkin::printLeaderBoard() const {
         rank++;
         printPlayerLeaderBoard(rank, *player);
     }
+}
+
+int Mtmchkin::initTeamSize(std::string& line)
+{
+    printEnterTeamSizeMessage();
+    bool parameterOkay = false;
+    int teamSize;
+    while(!parameterOkay)
+    {
+        line.clear();
+        getline(std::cin, line);
+        teamSize = std::stoi(line);
+        if(teamSize > MAX_TEAM_SIZE || teamSize < MIN_TEAM_SIZE){
+            printInvalidTeamSize();
+        }
+        else{
+            parameterOkay = true;
+        }
+    }
+    return teamSize;
 }

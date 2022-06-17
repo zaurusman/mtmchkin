@@ -18,34 +18,11 @@ void Merchant::applyEncounter(Player &player) const
         getline(std::cin, line);
         try {
             decision = std::stoi(line);
-            switch (decision) {
-                case Merchant::BUY_POTION : {
-                    if (player.pay(POTION_PRICE)) {
-                        player.heal(HEAL_AMOUNT);
-                        cost = POTION_PRICE;
-                    }
-                    else {
-                        printMerchantInsufficientCoins(std::cout);
-                    }
-                    break;
-                }
-                case Merchant::BUY_BUFF : {
-                    if (player.pay(BUFF_PRICE)) {
-                        player.buff(BUFF_AMOUNT);
-                        cost = BUFF_PRICE;
-                    }
-                    else {
-                        printMerchantInsufficientCoins(std::cout);
-                    }
-                    break;
-                }
-                case Merchant::DONT_BUY: {
-                    break;
-                }
-                default:{
-                    printInvalidInput();
-                    continue;
-                }
+            cost = applyDecision(decision, player);
+            if(cost == INVALID_INPUT)
+            {
+                printInvalidInput();
+                continue;
             }
         }
         catch (const std::invalid_argument& e){
@@ -54,6 +31,40 @@ void Merchant::applyEncounter(Player &player) const
         inputValid = true;
     }
     printMerchantSummary(std::cout,player.getName(), decision, cost);
+}
+
+int Merchant::applyDecision(int decision, Player &player)
+{
+    int cost=0;
+    switch (decision) {
+        case Merchant::BUY_POTION : {
+            if (player.pay(POTION_PRICE)) {
+                player.heal(HEAL_AMOUNT);
+                cost = POTION_PRICE;
+            }
+            else {
+                printMerchantInsufficientCoins(std::cout);
+            }
+            break;
+        }
+        case Merchant::BUY_BUFF : {
+            if (player.pay(BUFF_PRICE)) {
+                player.buff(BUFF_AMOUNT);
+                cost = BUFF_PRICE;
+            }
+            else {
+                printMerchantInsufficientCoins(std::cout);
+            }
+            break;
+        }
+        case Merchant::DONT_BUY: {
+            break;
+        }
+        default:{
+            return INVALID_INPUT;
+        }
+    }
+    return cost;
 }
 
 

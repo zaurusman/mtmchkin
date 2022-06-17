@@ -38,6 +38,16 @@ public:
     Merchant(const Merchant &other) = default;
     Merchant& operator=(const Merchant &other) = default;
 private:
+
+    /*
+     * checks the input of the player for the merchant.
+     * if it's valid acts acordingly.
+     * return:
+     * for valid input returns the price of the purchase.
+     * for invalid input returns INVALID_INPUT.
+     */
+    static int applyDecision(int decision, Player &player);
+
     static const int DONT_BUY = 0;
     static const int BUY_POTION = 1;
     static const int BUY_BUFF = 2;
@@ -45,6 +55,7 @@ private:
     static const int BUFF_PRICE = 10;
     static const int BUFF_AMOUNT = 1;
     static const int HEAL_AMOUNT = 1;
+    static const int INVALID_INPUT =-1;
 
 };
 
