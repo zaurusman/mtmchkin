@@ -31,6 +31,7 @@ public:
     Vampire(const Vampire &other) = default;
     Vampire& operator=(const Vampire &other) = default;
 private:
+
     static const int VAMPIRE_FORCE =10;
     static const int VAMPIRE_LOOT = 2;
     static const int VAMPIRE_LOSS = 10;

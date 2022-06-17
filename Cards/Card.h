@@ -13,7 +13,11 @@
 #include "../Players/Wizard.h"
 #include "utilities.h"
 
-//TODO: explain about the card class
+/* Card:
+     * Each card contains:
+     * name - which tells the card type.
+     * an applyEncounter function.
+     */
 class Card {
 public:
     /*
