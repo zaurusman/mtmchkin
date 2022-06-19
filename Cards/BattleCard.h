@@ -39,6 +39,7 @@ public:
      */
     void applyEncounter(Player &player) const override;
 
+    virtual void onLoss(Player& player) const;
     /*
      * Here we are explicitly telling the compiler to use the default methods
     */

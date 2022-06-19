@@ -13,6 +13,10 @@ void Vampire::applyEncounter(Player& player) const
     BattleCard::applyEncounter(player);
     if(player.getAttackStrength()<VAMPIRE_FORCE)
     {
-        player.unBuff(VAMPIRE_UNBUFF);
+        onLoss(player);
     }
+}
+void Vampire::onLoss(Player& player) const
+{
+    player.unBuff(VAMPIRE_UNBUFF);
 }

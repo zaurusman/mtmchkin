@@ -1,0 +1,28 @@
+//
+// Created by Yotam on 19/06/2022.
+//
+
+#ifndef MTMCHKIN_GANG_H
+#define MTMCHKIN_GANG_H
+#include "Card.h"
+#include "Factories.h"
+#include <fstream>
+#include <memory>
+#include <deque>
+
+
+class Gang : public Card {
+public:
+    Gang(const std::string &cardList,int lineNumber);
+
+    void applyEncounter(Player &player) const override;
+
+    int getSize() const;
+
+private:
+    std::deque<std::unique_ptr<BattleCard>> m_monsters;
+    int m_size;
+};
+
+
+#endif //MTMCHKIN_GANG_H

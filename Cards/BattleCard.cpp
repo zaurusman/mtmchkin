@@ -11,6 +11,10 @@ BattleCard::BattleCard(int force, int loot, int loss, std::string name):
     m_loss(loss)
 {}
 
+BattleCard::BattleCard(std::string name):
+
+{}
+
 void BattleCard::applyEncounter(Player& player) const
 {
     if(player.getAttackStrength()>=this->m_force)
@@ -20,16 +24,20 @@ void BattleCard::applyEncounter(Player& player) const
         player.levelUp();
     } else
     {
-        printLossBattle(player.getName(),this->getName());
-        if(m_loss==INFINITE_DAMAGE)//is Dragon
-        {
-            player.damage(player.getHP());
-        } else {
-            player.damage(m_loss);
-        }
+        onLoss(player);
     }
 }
 
+void BattleCard::onLoss(Player& player) const
+{
+    printLossBattle(player.getName(),this->getName());
+    if(m_loss==INFINITE_DAMAGE)//is Dragon
+    {
+        player.damage(player.getHP());
+    } else {
+        player.damage(m_loss);
+    }
+}
 
 void BattleCard::getInfoStream(std::ostream &outStream) const {
     bool isDragon = m_loss == BattleCard::INFINITE_DAMAGE;

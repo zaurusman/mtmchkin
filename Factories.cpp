@@ -57,3 +57,4 @@ std::unique_ptr<Player> createPlayer(std::string& name, std::string& job) {
     }
     throw InvalidClass();
 }
+

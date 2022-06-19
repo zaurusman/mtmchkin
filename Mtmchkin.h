@@ -3,7 +3,7 @@
 
 #include <string>
 #include <fstream>
-#include <queue>
+#include <deque>
 #include <memory>
 #include "Cards/Card.h"
 #include <Cards/Dragon.h>
