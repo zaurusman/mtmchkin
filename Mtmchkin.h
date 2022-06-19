@@ -6,14 +6,14 @@
 #include <deque>
 #include <memory>
 #include "Cards/Card.h"
-#include <Cards/Dragon.h>
-#include <Cards/Barfight.h>
-#include <Cards/Fairy.h>
-#include <Cards/Goblin.h>
-#include <Cards/Merchant.h>
-#include <Cards/Pitfall.h>
-#include <Cards/Treasure.h>
-#include <Cards/Vampire.h>
+#include "Cards/Dragon.h"
+#include "Cards/Barfight.h"
+#include "Cards/Fairy.h"
+#include "Cards/Goblin.h"
+#include "Cards/Merchant.h"
+#include "Cards/Pitfall.h"
+#include "Cards/Treasure.h"
+#include "Cards/Vampire.h"
 #include "Factories.h"
 
 #include "Players/Player.h"
