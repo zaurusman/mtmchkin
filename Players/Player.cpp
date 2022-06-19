@@ -15,7 +15,6 @@ Player::Player(std::string name) :
     m_HP(Player::DEFAULT_MAX_HP),
     m_coins(Player::DEFAULT_COINS)
 {
-    int length = name.length();
     if(!isValidName(name))
     {
         throw InvalidName();

@@ -5,7 +5,7 @@
 #ifndef MTMCHKIN_GANG_H
 #define MTMCHKIN_GANG_H
 #include "Card.h"
-#include "Factories.h"
+#include "../Factories.h"
 #include <fstream>
 #include <memory>
 #include <deque>
