@@ -11,7 +11,7 @@
 #include "../Players/Rogue.h"
 #include "../Players/Fighter.h"
 #include "../Players/Wizard.h"
-#include "utilities.h"
+#include "../utilities.h"
 
 /* Card:
      * Each card contains:

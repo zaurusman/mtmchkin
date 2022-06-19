@@ -16,7 +16,6 @@ m_losers(std::deque<std::unique_ptr<const Player>>())
     {
         throw DeckFileNotFound();
     }
-    std::string line;
     int lineNumber = 0;
     while (cardDeckFile.peek() != EOF)
     {

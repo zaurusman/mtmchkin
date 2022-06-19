@@ -3,7 +3,7 @@
 //
 
 #include "Player.h"
-#include "utilities.h"
+#include "../utilities.h"
 
 static bool isValidName(std::string name);
 

@@ -7,7 +7,7 @@
 
 
 #include "Card.h"
-#include "utilities.h"
+#include "../utilities.h"
 
 class Treasure : public Card {
 public:
