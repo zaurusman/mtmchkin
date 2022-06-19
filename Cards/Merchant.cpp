@@ -19,11 +19,6 @@ void Merchant::applyEncounter(Player &player) const
         try {
             decision = std::stoi(line);
             cost = applyDecision(decision, player);
-            if(cost == INVALID_INPUT)
-            {
-                printInvalidInput();
-                continue;
-            }
         }
         catch (const std::invalid_argument& e){
             printInvalidInput();
@@ -61,7 +56,7 @@ int Merchant::applyDecision(int decision, Player &player)
             break;
         }
         default:{
-            return INVALID_INPUT;
+            throw InvalidMerchantInput();
         }
     }
     return cost;

@@ -20,21 +20,21 @@
 
 #include "utilities.h"
 
-class InvalidName : public std::logic_error{
+class InvalidName : public std::invalid_argument{
 public:
-   explicit InvalidName(): std::logic_error("Invalid Name")    {
+   InvalidName(): std::invalid_argument("Player Creation Error: Invalid Name")    {
    }
 };
 
 class InvalidClass : public std::logic_error{
 public:
-   explicit InvalidClass(): std::logic_error("Invalid Class") {
+   InvalidClass(): std::logic_error("Player Creation Error: Invalid Class") {
    }
 };
 
 class DeckFileNotFound: public std::runtime_error{
 public:
-    explicit DeckFileNotFound(): std::runtime_error("Deck File Error: File not found"){}
+    DeckFileNotFound(): std::runtime_error("Deck File Error: File not found"){}
 };
 
 class DeckFileFormatError: public std::runtime_error{
@@ -45,7 +45,12 @@ public:
 
 class DeckFileInvalidSize: public std::runtime_error{
 public:
-    explicit DeckFileInvalidSize(): std::runtime_error("Deck File Error: Deck size is invalid"){}
+    DeckFileInvalidSize(): std::runtime_error("Deck File Error: Deck size is invalid"){}
+};
+
+class InvalidMerchantInput: public std::invalid_argument{
+public:
+    InvalidMerchantInput(): std::invalid_argument("Merchant Input Error: Input is invalid"){}
 };
 
 #endif //MTMCHKIN_EXCEPTION_H

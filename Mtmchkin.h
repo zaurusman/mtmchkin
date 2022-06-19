@@ -14,6 +14,7 @@
 #include <Cards/Pitfall.h>
 #include <Cards/Treasure.h>
 #include <Cards/Vampire.h>
+#include "Factories.h"
 
 #include "Players/Player.h"
 
@@ -93,7 +94,9 @@ private:
     *  @return
     *         int of a valid team size.
     */
-    static int initTeamSize(std::string& line);
+    static int initTeamSize();
+
+    void createPlayerQueue(int teamSize);
 
 
     static const char NAME_DELIMITER = ' ';

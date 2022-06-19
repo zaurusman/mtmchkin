@@ -37,11 +37,12 @@ public:
     ~Merchant() = default;
     Merchant(const Merchant &other) = default;
     Merchant& operator=(const Merchant &other) = default;
+
 private:
 
     /*
      * checks the input of the player for the merchant.
-     * if it's valid acts acordingly.
+     * if its valid acts accordingly.
      * return:
      * for valid input returns the price of the purchase.
      * for invalid input returns INVALID_INPUT.

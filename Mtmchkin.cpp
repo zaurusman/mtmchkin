@@ -26,81 +26,21 @@ m_losers(std::deque<std::unique_ptr<const Player>>())
     if(lineNumber < MIN_DECK_SIZE){
         throw DeckFileInvalidSize();
     }
-    int teamSize = initTeamSize(line);
-    bool parameterOkay = false;
-    std::string name, job;
-    for (int i = 0; i < teamSize; i++)
-    {
-        printInsertPlayerMessage();
-        while(!parameterOkay) {
-            getline(std::cin, name, NAME_DELIMITER);
-            getline(std::cin, job, JOB_DELIMITER);
-            try {
-                m_activePlayers.push_back(createPlayerByJob(name, job));
-                parameterOkay = true;
-            }
-            catch (const InvalidName &exception) {
-                printInvalidName();
-            }
-            catch (const InvalidClass &exception) {
-                printInvalidClass();
-            }
-        }
-        parameterOkay = false;
-    }
+    int teamSize = initTeamSize();
+    Mtmchkin::createPlayerQueue(teamSize);
     m_roundCount = 1;
 }
 
 std::unique_ptr<Card> Mtmchkin::createCardByName(const std::string& name, int line)
 {
-    if(name == "Barfight")
-    {
-        return std::unique_ptr<Card>(new Barfight());
-    }
-    if(name == "Dragon")
-    {
-        return std::unique_ptr<Card>(new Dragon());
-    }
-    if(name == "Fairy")
-    {
-        return std::unique_ptr<Card>(new Fairy());
-    }
-    if(name == "Goblin")
-    {
-        return std::unique_ptr<Card>(new Goblin());
-    }
-    if(name == "Merchant")
-    {
-        return std::unique_ptr<Card>(new Merchant());
-    }
-    if(name == "Pitfall")
-    {
-        return std::unique_ptr<Card>(new Pitfall());
-    }
-    if(name == "Treasure")
-    {
-        return std::unique_ptr<Card>(new Treasure());
-    }
-    if(name == "Vampire")
-    {
-        return std::unique_ptr<Card>(new Vampire());
-    }
-    throw DeckFileFormatError(line);
+    return std::unique_ptr<Card>(Factories::createCardByNameFromLine(name, line)); //todo bad alloc
 }
 
 std::unique_ptr<Player> Mtmchkin::createPlayerByJob(const std::string& name, const std::string& job)
 {
 
-    if (job == "Fighter") {
-        return std::unique_ptr<Player>(new Fighter(name));
-    }
-    if (job == "Rogue") {
-        return std::unique_ptr<Player>(new Rogue(name));
-    }
-    if (job == "Wizard") {
-        return std::unique_ptr<Player>(new Wizard(name));
-    }
-    throw InvalidClass();
+    return std::unique_ptr<Player>(Factories::createPlayer(name, job));
+
 }
 
 
@@ -166,22 +106,50 @@ void Mtmchkin::printLeaderBoard() const {
     }
 }
 
-int Mtmchkin::initTeamSize(std::string& line)
+int Mtmchkin::initTeamSize()
 {
+    std::string line;
     printEnterTeamSizeMessage();
     bool parameterOkay = false;
     int teamSize;
     while(!parameterOkay)
     {
-        line.clear();
-        getline(std::cin, line);
-        teamSize = std::stoi(line);
-        if(teamSize > MAX_TEAM_SIZE || teamSize < MIN_TEAM_SIZE){
-            printInvalidTeamSize();
+        try {
+            getline(std::cin, line);
+            teamSize = std::stoi(line);
+            if (teamSize > MAX_TEAM_SIZE || teamSize < MIN_TEAM_SIZE) {
+                printInvalidTeamSize();
+            } else {
+                parameterOkay = true;
+            }
         }
-        else{
-            parameterOkay = true;
+        catch (...){
+            printInvalidTeamSize();
         }
     }
     return teamSize;
+}
+
+void Mtmchkin::createPlayerQueue(int teamSize){
+    bool parameterOkay = false;
+    std::string name, job;
+    for (int i = 0; i < teamSize; i++)
+    {
+        printInsertPlayerMessage();
+        while(!parameterOkay) {
+            getline(std::cin, name, NAME_DELIMITER);
+            getline(std::cin, job, JOB_DELIMITER);
+            try {
+                m_activePlayers.push_back(createPlayerByJob(name, job));
+                parameterOkay = true;
+            }
+            catch (const InvalidName &exception) {
+                printInvalidName();
+            }
+            catch (const InvalidClass &exception) {
+                printInvalidClass();
+            }
+        }
+        parameterOkay = false;
+    }
 }
