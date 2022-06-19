@@ -11,9 +11,6 @@ BattleCard::BattleCard(int force, int loot, int loss, std::string name):
     m_loss(loss)
 {}
 
-BattleCard::BattleCard(std::string name):
-
-{}
 
 void BattleCard::applyEncounter(Player& player) const
 {
@@ -34,7 +31,8 @@ void BattleCard::onLoss(Player& player) const
     if(m_loss==INFINITE_DAMAGE)//is Dragon
     {
         player.damage(player.getHP());
-    } else {
+    }
+    else {
         player.damage(m_loss);
     }
 }

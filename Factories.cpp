@@ -3,27 +3,25 @@
 //
 
 #include "Factories.h"
-using namespace Factories;
-
-std::unique_ptr<Card> createBattleCardFromStream(std::istream &cardDeckFile, std::string& name, int lineNumber){
+BattleCard* Factories::createBattleCardFromStream(std::istream &cardDeckFile, std::string& name, int& lineNumber){
     if (name == "Dragon") {
-        return std::unique_ptr<Card>(new Dragon());
+        return new Dragon();
     }
     if (name == "Goblin") {
-        return std::unique_ptr<Card>(new Goblin());
+        return new Goblin();
     }
     if (name == "Vampire") {
-        return std::unique_ptr<Card>(new Vampire());
+        return new Vampire();
     }
     if (name == "Gang") {
-     std::unique_ptr<Card> newGang(new Gang(cardDeckFile,lineNumber));
-     lineNumber+= newGang.getSize();
+     Gang* newGang = new Gang(cardDeckFile, lineNumber);
+     lineNumber += newGang->getSize();
      return newGang;
     }
     throw DeckFileFormatError(lineNumber);
 }
 
-std::unique_ptr<Card> createCardFromStream(std::istream &cardDeckFile, int lineNumber) {
+std::unique_ptr<Card> Factories::createCardFromStream(std::istream &cardDeckFile, int& lineNumber) {
     std::string name;
     lineNumber++;
     getline(cardDeckFile, name);
@@ -42,10 +40,12 @@ std::unique_ptr<Card> createCardFromStream(std::istream &cardDeckFile, int lineN
     if (name == "Treasure") {
         return std::unique_ptr<Card>(new Treasure());
     }
-    return createBattleCardByNameFromStream(cardDeckFile, name, lineNumber);
+    std::unique_ptr<Card> card (Factories::createBattleCardFromStream(cardDeckFile, name, lineNumber));
+    return card;
+
 }
 
-std::unique_ptr<Player> createPlayer(std::string& name, std::string& job) {
+std::unique_ptr<Player> Factories::createPlayer(std::string& name, std::string& job) {
     if (job == "Fighter") {
         return std::unique_ptr<Player>(new Fighter(name));
     }

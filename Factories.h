@@ -15,8 +15,6 @@
 #include "Cards/Gang.h"
 #include "Exception.h"
 #include <memory>
-
-
 namespace Factories {
     /*
      * creates a card based on a given string
@@ -25,7 +23,7 @@ namespace Factories {
      * return
      *  pointer to a new instance of card based on the string
      */
-    std::unique_ptr<Card> createCardFromStream(std::istream& cardDeckFile, int lineNumber);
+    std::unique_ptr<Card> createCardFromStream(std::istream &cardDeckFile, int& lineNumber);
 
     /*
      * creates a battle card based on a given string
@@ -34,7 +32,7 @@ namespace Factories {
      * return
      *  pointer to a new instance of card based on the string
      */
-    std::unique_ptr<Card> createBattleCardFromStream(std::istream& cardDeckFile, std::string& name, int lineNumber);
+    BattleCard* createBattleCardFromStream(std::istream &cardDeckFile, std::string& name, int& lineNumber);
 
     /*
      * creates a player based on 2 given strings

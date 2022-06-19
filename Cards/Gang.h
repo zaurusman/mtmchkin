@@ -20,8 +20,8 @@ public:
     int getSize() const;
 
 private:
+    const int GANG_STAT = 0;
     std::deque<std::unique_ptr<BattleCard>> m_monsters;
-    int m_size;
 };
 
 

@@ -8,15 +8,8 @@ Vampire::Vampire():
     BattleCard(VAMPIRE_FORCE,VAMPIRE_LOOT,VAMPIRE_LOSS,"Vampire")
 {}
 
-void Vampire::applyEncounter(Player& player) const
-{
-    BattleCard::applyEncounter(player);
-    if(player.getAttackStrength()<VAMPIRE_FORCE)
-    {
-        onLoss(player);
-    }
-}
 void Vampire::onLoss(Player& player) const
 {
+    this->BattleCard::onLoss(player);
     player.unBuff(VAMPIRE_UNBUFF);
 }

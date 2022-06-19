@@ -147,7 +147,7 @@ static bool isValidName(std::string name)
 }
 
 bool Player::isMaxLevel() const{
-    if(this->getLevel() == Player::MAX_LEVEL);
+    return this->getLevel() == Player::MAX_LEVEL;
 }
 
 void Player::levelDown(){

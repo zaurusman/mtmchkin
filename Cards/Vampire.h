@@ -14,15 +14,6 @@ public:
      */
     Vampire();
 
-    /*
-     *
-     * applies the encounter for the Vampire Card
-     * if the player has enough force he levels up and gets the loot, else he loses health and force.
-     * @param player - the player who activated the card.
-     * returns
-     *          void
-     */
-    void applyEncounter(Player &player) const override;
 
     void onLoss(Player &player) const override;
     /*
