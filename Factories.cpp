@@ -16,7 +16,7 @@ std::unique_ptr<Card> createBattleCardFromStream(std::istream &cardDeckFile, std
         return std::unique_ptr<Card>(new Vampire());
     }
     if (name == "Gang") {
-     std::unique_ptr<Card> newGang(new Gang());
+     std::unique_ptr<Card> newGang(new Gang(cardDeckFile,lineNumber));
      lineNumber+= newGang.getSize();
      return newGang;
     }

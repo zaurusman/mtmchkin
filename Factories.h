@@ -1,6 +1,8 @@
 //
 // Created by Elad on 19/06/2022.
 //
+#ifndef MTMCHKIN_CARDFACTORIES_H
+#define MTMCHKIN_CARDFACTORIES_H
 #include "Cards/Card.h"
 #include "Cards/Dragon.h"
 #include "Cards/Barfight.h"
@@ -10,11 +12,11 @@
 #include "Cards/Pitfall.h"
 #include "Cards/Treasure.h"
 #include "Cards/Vampire.h"
+#include "Cards/Gang.h"
 #include "Exception.h"
 #include <memory>
 
-#ifndef MTMCHKIN_CARDFACTORIES_H
-#define MTMCHKIN_CARDFACTORIES_H
+
 namespace Factories {
     /*
      * creates a card based on a given string

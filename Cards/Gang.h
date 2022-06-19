@@ -11,9 +11,9 @@
 #include <deque>
 
 
-class Gang : public Card {
+class Gang : public BattleCard {
 public:
-    Gang(const std::string &cardList,int lineNumber);
+    Gang(std::istream &cardList,int lineNumber);
 
     void applyEncounter(Player &player) const override;
 

@@ -4,19 +4,16 @@
 
 #include "Gang.h"
 
-Gang::Gang(const std::string &gangFile,int lineNumber):
-Card("Gang")
+Gang::Gang(std::istream &gangFile,int lineNumber):
+BattleCard(0,0,0,"Gang")
 {
     m_size=0;
-    std::ifstream gangList(gangFile);
-    if(!gangList)
-    {
-        throw DeckFileNotFound();
-    }
     std::string cardName;
-    while(getline(gangList, cardName)&&cardName!="EndGang")
+    while(getline(gangFile, cardName)&&cardName!="EndGang")
     {
-        m_monsters.push_back(Factories::createBattleCardFromStream(cardName,++lineNumber));
+        Card* temp = Factories::createBattleCardFromStream(gangFile,cardName,++lineNumber);
+        std::unique_ptr<BattleCard> current(dynamic_cast<BattleCard*>(temp));
+        m_monsters.push_back(std::move(current));
         m_size++;
     }
 }
