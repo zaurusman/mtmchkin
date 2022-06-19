@@ -11,12 +11,14 @@
 #include "Cards/Treasure.h"
 #include "Cards/Vampire.h"
 #include "Exception.h"
+#include <memory>
+
 #ifndef MTMCHKIN_CARDFACTORIES_H
 #define MTMCHKIN_CARDFACTORIES_H
 namespace Factories {
-    Card *createCardByNameFromLine(std::string name, int lineNumber);
+    std::unique_ptr<Card> createCardByNameFromLine(std::string name, int lineNumber);
 
-    Card *createBattleCardByNameFromLine(std::string name, int lineNumber);
-    Player* createPlayer(std::string name, std::string job);
+    std::unique_ptr<Card> createBattleCardByNameFromLine(std::string name, int lineNumber);
+    std::unique_ptr<Player> createPlayer(std::string name, std::string job);
 }
 #endif //MTMCHKIN_CARDFACTORIES_H

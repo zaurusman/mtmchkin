@@ -30,7 +30,7 @@ public:
     * @return
     *      A new instance of Mtmchkin.
     */
-    Mtmchkin(const std::string fileName);
+    explicit Mtmchkin(const std::string& fileName);
     
     /*
     * Play the next Round of the game - according to the instruction in the exercise document.
@@ -67,24 +67,6 @@ public:
 
 
 private:
-
-    /*
-    *  Returns a unique_ptr to a new object of the correct Card type.
-    *  if an invalid Card type was sent - throws an exception.
-    *
-    *  @return
-    *          a unique_ptr to Card type object
-    */
-    static std::unique_ptr<Card> createCardByName(const std::string& name, int line);
-
-    /*
-    *  Returns a unique_ptr to a new object of the correct Job type.
-    *  if an invalid Job type or name was sent - throws an appropriate exception.
-    *
-    *  @return
-    *          a unique_ptr to Job type object
-    */
-    static std::unique_ptr<Player> createPlayerByJob(const std::string& name, const std::string& job);
 
     /*
     *  Gets input for team size from user,

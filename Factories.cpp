@@ -1,57 +1,58 @@
 //
 // Created by Elad on 19/06/2022.
 //
+
 #include "Factories.h"
 
-Card* Factories::createBattleCardByNameFromLine(std::string name, int lineNumber){
+std::unique_ptr<Card> Factories::createBattleCardByNameFromLine(std::string name, int lineNumber){
     if(name == "Dragon")
     {
-        return new Dragon();
+        return std::unique_ptr<Card>(new Dragon());
     }
     if(name == "Goblin")
     {
-        return new Goblin();
+        return std::unique_ptr<Card>(new Goblin());
     }
     if(name == "Vampire")
     {
-        return new Vampire();
+        return std::unique_ptr<Card>(new Vampire());
     }
     throw DeckFileFormatError(lineNumber);
 }
 
-Card* Factories::createCardByNameFromLine(std::string name, int lineNumber){
+std::unique_ptr<Card> Factories::createCardByNameFromLine(std::string name, int lineNumber){
     if(name == "Barfight")
     {
-        return new Barfight;
+        return std::unique_ptr<Card>(new Barfight());
     }
     if(name == "Fairy")
     {
-        return new Fairy();
+        return std::unique_ptr<Card>(new Fairy());
     }
     if(name == "Merchant")
     {
-        return new Merchant();
+        return std::unique_ptr<Card>(new Merchant());
     }
     if(name == "Pitfall")
     {
-        return new Pitfall();
+        return std::unique_ptr<Card>(new Pitfall());
     }
     if(name == "Treasure")
     {
-        return new Treasure();
+        return std::unique_ptr<Card>(new Treasure());
     }
     return Factories::createBattleCardByNameFromLine(name, lineNumber);
 }
 
-Player* Factories::createPlayer(std::string name, std::string job){
+std::unique_ptr<Player> Factories::createPlayer(std::string name, std::string job){
     if (job == "Fighter") {
-        return new Fighter(name);
+        return std::unique_ptr<Player>(new Fighter(name));
     }
     if (job == "Rogue") {
-        return new Rogue(name);
+        return std::unique_ptr<Player>(new Rogue(name));
     }
     if (job == "Wizard") {
-        return new Wizard(name);
+        return std::unique_ptr<Player>(new Wizard(name));
     }
     throw InvalidClass();
 }

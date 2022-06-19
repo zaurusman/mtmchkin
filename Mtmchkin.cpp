@@ -3,10 +3,9 @@
 //
 
 #include "Mtmchkin.h"
-bool checkInputString(std::string line, int max, int min, int *teamSize);
 
 //TODO: MAP
-Mtmchkin::Mtmchkin(std::string fileName):
+Mtmchkin::Mtmchkin(const std::string& fileName):
 m_activePlayers(std::deque<std::unique_ptr<Player>>()),
 m_winners(std::deque<std::unique_ptr<const Player>>()),
 m_losers(std::deque<std::unique_ptr<const Player>>())
@@ -21,7 +20,7 @@ m_losers(std::deque<std::unique_ptr<const Player>>())
     int lineNumber = 0;
     while (getline(cardDeckFile, line))
     {
-        m_deck.push_back(createCardByName(line,++lineNumber));
+        m_deck.push_back(Factories::createCardByNameFromLine(line,++lineNumber));
     }
     if(lineNumber < MIN_DECK_SIZE){
         throw DeckFileInvalidSize();
@@ -31,17 +30,6 @@ m_losers(std::deque<std::unique_ptr<const Player>>())
     m_roundCount = 1;
 }
 
-std::unique_ptr<Card> Mtmchkin::createCardByName(const std::string& name, int line)
-{
-    return std::unique_ptr<Card>(Factories::createCardByNameFromLine(name, line)); //todo bad alloc
-}
-
-std::unique_ptr<Player> Mtmchkin::createPlayerByJob(const std::string& name, const std::string& job)
-{
-
-    return std::unique_ptr<Player>(Factories::createPlayer(name, job));
-
-}
 
 
 void Mtmchkin::playRound()
@@ -140,7 +128,7 @@ void Mtmchkin::createPlayerQueue(int teamSize){
             getline(std::cin, name, NAME_DELIMITER);
             getline(std::cin, job, JOB_DELIMITER);
             try {
-                m_activePlayers.push_back(createPlayerByJob(name, job));
+                m_activePlayers.push_back(Factories::createPlayer(name, job));
                 parameterOkay = true;
             }
             catch (const InvalidName &exception) {
