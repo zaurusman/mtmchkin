@@ -40,6 +40,20 @@ public:
     void levelUp();
 
     /*
+     * levels down the player (down to a min of level 0).
+     * @return
+     *      void
+    */
+    void levelDown();
+
+    /*
+     * checks if the player's level is the max level
+     * @return
+     *      true iff the level is the max level
+    */
+    bool isMaxLevel() const;
+
+    /*
      * gives the current level of the player.
      * @return
      *      player's level

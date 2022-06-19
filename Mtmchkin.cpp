@@ -18,9 +18,9 @@ m_losers(std::deque<std::unique_ptr<const Player>>())
     }
     std::string line;
     int lineNumber = 0;
-    while (getline(cardDeckFile, line))
+    while (cardDeckFile.peek() != EOF)
     {
-        m_deck.push_back(Factories::createCardByNameFromLine(line,++lineNumber));
+        m_deck.push_back(Factories::createCardFromStream(cardDeckFile, lineNumber));
     }
     if(lineNumber < MIN_DECK_SIZE){
         throw DeckFileInvalidSize();
@@ -48,7 +48,8 @@ void Mtmchkin::playRound()
         {
             m_losers.push_front(move(currentPlayer));
         }
-        else if(currentPlayer->getLevel()==WINNING_LEVEL)
+        else
+            if(currentPlayer->isMaxLevel())
         {
             m_winners.push_back(move(currentPlayer));
         } else

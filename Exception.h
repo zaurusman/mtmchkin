@@ -26,9 +26,9 @@ public:
    }
 };
 
-class InvalidClass : public std::logic_error{
+class InvalidClass : public std::invalid_argument{
 public:
-   InvalidClass(): std::logic_error("Player Creation Error: Invalid Class") {
+   InvalidClass(): std::invalid_argument("Player Creation Error: Invalid Class") {
    }
 };
 
@@ -52,5 +52,6 @@ class InvalidMerchantInput: public std::invalid_argument{
 public:
     InvalidMerchantInput(): std::invalid_argument("Merchant Input Error: Input is invalid"){}
 };
+
 
 #endif //MTMCHKIN_EXCEPTION_H

@@ -145,3 +145,13 @@ static bool isValidName(std::string name)
     std::string criteria("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXY");
     return (std::string::npos == name.find_first_not_of(criteria));
 }
+
+bool Player::isMaxLevel() const{
+    if(this->getLevel() == Player::MAX_LEVEL);
+}
+
+void Player::levelDown(){
+    if(m_level>=1){
+        m_level--;
+    }
+}

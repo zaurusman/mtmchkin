@@ -10,15 +10,38 @@
 #include "Cards/Pitfall.h"
 #include "Cards/Treasure.h"
 #include "Cards/Vampire.h"
+#include "Cards/Gang.h"
 #include "Exception.h"
 #include <memory>
 
 #ifndef MTMCHKIN_CARDFACTORIES_H
 #define MTMCHKIN_CARDFACTORIES_H
 namespace Factories {
-    std::unique_ptr<Card> createCardByNameFromLine(std::string name, int lineNumber);
+    /*
+     * creates a card based on a given string
+     * @param cardDeckFile - the stream of the card list
+     * @param lineNumber - the line the string came from
+     * return
+     *  pointer to a new instance of card based on the string
+     */
+    std::unique_ptr<Card> createCardFromStream(std::istream& cardDeckFile, int lineNumber);
 
-    std::unique_ptr<Card> createBattleCardByNameFromLine(std::string name, int lineNumber);
-    std::unique_ptr<Player> createPlayer(std::string name, std::string job);
+    /*
+     * creates a battle card based on a given string
+     * @param name - the name of the card
+     * @param lineNumber - the line the string came from
+     * return
+     *  pointer to a new instance of card based on the string
+     */
+    std::unique_ptr<Card> createBattleCardFromStream(std::istream& cardDeckFile, std::string& name, int lineNumber);
+
+    /*
+     * creates a player based on 2 given strings
+     * @param name - the name of the card
+     * @param job - the job of the player
+     * return
+     *  pointer to a new instance of player based on the string
+     */
+    std::unique_ptr<Player> createPlayer(std::string& name, std::string& job);
 }
 #endif //MTMCHKIN_CARDFACTORIES_H

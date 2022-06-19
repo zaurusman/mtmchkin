@@ -86,7 +86,6 @@ private:
     static const int MAX_TEAM_SIZE = 6;
     static const int MIN_TEAM_SIZE = 2;
     static const int MIN_DECK_SIZE = 5;
-    static const int WINNING_LEVEL = 10;
 
     int m_roundCount;
     std::deque<std::unique_ptr<Card>> m_deck;

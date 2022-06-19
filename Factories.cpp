@@ -3,48 +3,49 @@
 //
 
 #include "Factories.h"
+using namespace Factories;
 
-std::unique_ptr<Card> Factories::createBattleCardByNameFromLine(std::string name, int lineNumber){
-    if(name == "Dragon")
-    {
+std::unique_ptr<Card> createBattleCardFromStream(std::istream &cardDeckFile, std::string& name, int lineNumber){
+    if (name == "Dragon") {
         return std::unique_ptr<Card>(new Dragon());
     }
-    if(name == "Goblin")
-    {
+    if (name == "Goblin") {
         return std::unique_ptr<Card>(new Goblin());
     }
-    if(name == "Vampire")
-    {
+    if (name == "Vampire") {
         return std::unique_ptr<Card>(new Vampire());
+    }
+    if (name == "Gang") {
+     std::unique_ptr<Card> newGang(new Gang());
+     lineNumber+= newGang.getSize();
+     return newGang;
     }
     throw DeckFileFormatError(lineNumber);
 }
 
-std::unique_ptr<Card> Factories::createCardByNameFromLine(std::string name, int lineNumber){
-    if(name == "Barfight")
-    {
+std::unique_ptr<Card> createCardFromStream(std::istream &cardDeckFile, int lineNumber) {
+    std::string name;
+    lineNumber++;
+    getline(cardDeckFile, name);
+    if (name == "Barfight") {
         return std::unique_ptr<Card>(new Barfight());
     }
-    if(name == "Fairy")
-    {
+    if (name == "Fairy") {
         return std::unique_ptr<Card>(new Fairy());
     }
-    if(name == "Merchant")
-    {
+    if (name == "Merchant") {
         return std::unique_ptr<Card>(new Merchant());
     }
-    if(name == "Pitfall")
-    {
+    if (name == "Pitfall") {
         return std::unique_ptr<Card>(new Pitfall());
     }
-    if(name == "Treasure")
-    {
+    if (name == "Treasure") {
         return std::unique_ptr<Card>(new Treasure());
     }
-    return Factories::createBattleCardByNameFromLine(name, lineNumber);
+    return createBattleCardByNameFromStream(cardDeckFile, name, lineNumber);
 }
 
-std::unique_ptr<Player> Factories::createPlayer(std::string name, std::string job){
+std::unique_ptr<Player> createPlayer(std::string& name, std::string& job) {
     if (job == "Fighter") {
         return std::unique_ptr<Player>(new Fighter(name));
     }
@@ -56,4 +57,3 @@ std::unique_ptr<Player> Factories::createPlayer(std::string name, std::string jo
     }
     throw InvalidClass();
 }
-
