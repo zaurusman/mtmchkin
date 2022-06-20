@@ -1,0 +1,72 @@
+Welcome to the world of MtmChkin!!!
+Please enter team size: (2-6)
+Please insert the player name and class: 
+You have entered an invalid class. Please try again.
+You have entered an invalid class. Please try again.
+Please insert the player name and class: 
+
+-------------------------------------------
+Start of round 1:
+
+Start of matamDalf's turn: 
+Player matamDalf has been defeated by a Dragon.
+Player matamDalf has been defeated by a Goblin.
+Player matamDalf has been defeated by a Goblin.
+Player matamDalf has been defeated by a Goblin.
+Player matamDalf has been defeated by a Goblin.
+Start of rocky's turn: 
+Player rocky has defeated Goblin and rose 1 Level!
+
+The current ranking of the Team:
+Ranking    Player Name     Level     Force HP    Coins Job
+1          rocky           2         5     100   12    Fighter  
+2          matamDalf       1         5     0     10    Wizard  
+
+-------------------------------------------
+Start of round 2:
+
+Start of rocky's turn: 
+Player rocky has defeated Goblin and rose 1 Level!
+
+The current ranking of the Team:
+Ranking    Player Name     Level     Force HP    Coins Job
+1          rocky           3         5     100   14    Fighter  
+2          matamDalf       1         5     0     10    Wizard  
+
+-------------------------------------------
+Start of round 3:
+
+Start of rocky's turn: 
+Player rocky has defeated Goblin and rose 1 Level!
+
+The current ranking of the Team:
+Ranking    Player Name     Level     Force HP    Coins Job
+1          rocky           4         5     100   16    Fighter  
+2          matamDalf       1         5     0     10    Wizard  
+
+-------------------------------------------
+Start of round 4:
+
+Start of rocky's turn: 
+You fell into the trap, lose 10 health points.
+
+The current ranking of the Team:
+Ranking    Player Name     Level     Force HP    Coins Job
+1          rocky           4         5     90    16    Fighter  
+2          matamDalf       1         5     0     10    Wizard  
+
+-------------------------------------------
+Start of round 5:
+
+Start of rocky's turn: 
+Player rocky has been defeated by a Dragon.
+Player rocky has been defeated by a Goblin.
+Player rocky has been defeated by a Goblin.
+Player rocky has been defeated by a Goblin.
+Player rocky has been defeated by a Goblin.
+The Game has ended!!!
+
+The current ranking of the Team:
+Ranking    Player Name     Level     Force HP    Coins Job
+1          rocky           4         5     0     16    Fighter  
+2          matamDalf       1         5     0     10    Wizard  

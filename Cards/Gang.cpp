@@ -18,30 +18,31 @@ BattleCard(GANG_STAT, GANG_STAT, GANG_STAT,"Gang")
 
 void Gang::applyEncounter(Player &player) const
 {
-    int currentlevel = player.getLevel();
     bool lost = false;
     for (std::unique_ptr<BattleCard>const &card : m_monsters)
     {
         if(lost)
         {
             card->onLoss(player);
+            card->printWinLose(!lost, player.getName());
         }
-        else{
-            card->applyEncounter(player);
-            if (currentlevel < player.getLevel()) {
-                player.levelDown();
-            }
-            else {
-                lost = true;
+        else
+        {
+            lost = card->applyEncounterAsGang(player);
+            if(lost){
+                card->printWinLose(!lost, player.getName());
             }
         }
     }
     if(!lost){
         player.levelUp();
+       this->printWinLose(!lost, player.getName());
     }
 }
+
 
 int Gang::getSize() const
 {
     return m_monsters.size();
 }
+

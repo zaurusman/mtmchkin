@@ -8,7 +8,7 @@
 #include "../Factories.h"
 #include <fstream>
 #include <memory>
-#include <deque>
+#include <vector>
 
 
 class Gang : public BattleCard {
@@ -21,7 +21,8 @@ public:
 
 private:
     const int GANG_STAT = 0;
-    std::deque<std::unique_ptr<BattleCard>> m_monsters;
+    std::vector<std::unique_ptr<BattleCard>> m_monsters;
+
 };
 
 

@@ -1,0 +1,176 @@
+Welcome to the world of MtmChkin!!!
+Please enter team size: (2-6)
+Please insert the player name and class: 
+You have entered an invalid class. Please try again.
+You have entered an invalid class. Please try again.
+Please insert the player name and class: 
+
+-------------------------------------------
+Start of round 1:
+
+Start of OmerTests's turn: 
+Player OmerTests has defeated Gang and rose 1 Level!
+Start of rocky's turn: 
+Player rocky has defeated Goblin and rose 1 Level!
+
+The current ranking of the Team:
+Ranking    Player Name     Level     Force HP    Coins Job
+1          OmerTests       2         5     100   14    Wizard  
+2          rocky           2         5     100   12    Fighter  
+
+-------------------------------------------
+Start of round 2:
+
+Start of OmerTests's turn: 
+Player OmerTests has defeated Goblin and rose 1 Level!
+Start of rocky's turn: 
+Player rocky has defeated Goblin and rose 1 Level!
+
+The current ranking of the Team:
+Ranking    Player Name     Level     Force HP    Coins Job
+1          OmerTests       3         5     100   16    Wizard  
+2          rocky           3         5     100   14    Fighter  
+
+-------------------------------------------
+Start of round 3:
+
+Start of OmerTests's turn: 
+You fell into the trap, lose 10 health points.
+Start of rocky's turn: 
+You fell into the trap, lose 10 health points.
+
+The current ranking of the Team:
+Ranking    Player Name     Level     Force HP    Coins Job
+1          OmerTests       3         5     90    16    Wizard  
+2          rocky           3         5     90    14    Fighter  
+
+-------------------------------------------
+Start of round 4:
+
+Start of OmerTests's turn: 
+Player OmerTests has defeated Gang and rose 1 Level!
+Start of rocky's turn: 
+Player rocky has defeated Goblin and rose 1 Level!
+
+The current ranking of the Team:
+Ranking    Player Name     Level     Force HP    Coins Job
+1          OmerTests       4         5     90    20    Wizard  
+2          rocky           4         5     90    16    Fighter  
+
+-------------------------------------------
+Start of round 5:
+
+Start of OmerTests's turn: 
+Player OmerTests has defeated Goblin and rose 1 Level!
+Start of rocky's turn: 
+Player rocky has defeated Goblin and rose 1 Level!
+
+The current ranking of the Team:
+Ranking    Player Name     Level     Force HP    Coins Job
+1          OmerTests       5         5     90    22    Wizard  
+2          rocky           5         5     90    18    Fighter  
+
+-------------------------------------------
+Start of round 6:
+
+Start of OmerTests's turn: 
+You fell into the trap, lose 10 health points.
+Start of rocky's turn: 
+You fell into the trap, lose 10 health points.
+
+The current ranking of the Team:
+Ranking    Player Name     Level     Force HP    Coins Job
+1          OmerTests       5         5     80    22    Wizard  
+2          rocky           5         5     80    18    Fighter  
+
+-------------------------------------------
+Start of round 7:
+
+Start of OmerTests's turn: 
+Player OmerTests has defeated Gang and rose 1 Level!
+Start of rocky's turn: 
+Player rocky has defeated Goblin and rose 1 Level!
+
+The current ranking of the Team:
+Ranking    Player Name     Level     Force HP    Coins Job
+1          OmerTests       6         5     80    26    Wizard  
+2          rocky           6         5     80    20    Fighter  
+
+-------------------------------------------
+Start of round 8:
+
+Start of OmerTests's turn: 
+Player OmerTests has defeated Goblin and rose 1 Level!
+Start of rocky's turn: 
+Player rocky has defeated Goblin and rose 1 Level!
+
+The current ranking of the Team:
+Ranking    Player Name     Level     Force HP    Coins Job
+1          OmerTests       7         5     80    28    Wizard  
+2          rocky           7         5     80    22    Fighter  
+
+-------------------------------------------
+Start of round 9:
+
+Start of OmerTests's turn: 
+You fell into the trap, lose 10 health points.
+Start of rocky's turn: 
+You fell into the trap, lose 10 health points.
+
+The current ranking of the Team:
+Ranking    Player Name     Level     Force HP    Coins Job
+1          OmerTests       7         5     70    28    Wizard  
+2          rocky           7         5     70    22    Fighter  
+
+-------------------------------------------
+Start of round 10:
+
+Start of OmerTests's turn: 
+Player OmerTests has defeated Gang and rose 1 Level!
+Start of rocky's turn: 
+Player rocky has defeated Goblin and rose 1 Level!
+
+The current ranking of the Team:
+Ranking    Player Name     Level     Force HP    Coins Job
+1          OmerTests       8         5     70    32    Wizard  
+2          rocky           8         5     70    24    Fighter  
+
+-------------------------------------------
+Start of round 11:
+
+Start of OmerTests's turn: 
+Player OmerTests has defeated Goblin and rose 1 Level!
+Start of rocky's turn: 
+Player rocky has defeated Goblin and rose 1 Level!
+
+The current ranking of the Team:
+Ranking    Player Name     Level     Force HP    Coins Job
+1          OmerTests       9         5     70    34    Wizard  
+2          rocky           9         5     70    26    Fighter  
+
+-------------------------------------------
+Start of round 12:
+
+Start of OmerTests's turn: 
+You fell into the trap, lose 10 health points.
+Start of rocky's turn: 
+You fell into the trap, lose 10 health points.
+
+The current ranking of the Team:
+Ranking    Player Name     Level     Force HP    Coins Job
+1          OmerTests       9         5     60    34    Wizard  
+2          rocky           9         5     60    26    Fighter  
+
+-------------------------------------------
+Start of round 13:
+
+Start of OmerTests's turn: 
+Player OmerTests has defeated Gang and rose 1 Level!
+Start of rocky's turn: 
+Player rocky has defeated Goblin and rose 1 Level!
+The Game has ended!!!
+
+The current ranking of the Team:
+Ranking    Player Name     Level     Force HP    Coins Job
+1          OmerTests       10        5     60    38    Wizard  
+2          rocky           10        5     60    28    Fighter  

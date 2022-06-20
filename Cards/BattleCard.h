@@ -39,6 +39,10 @@ public:
      */
     void applyEncounter(Player &player) const override;
 
+    bool applyEncounterAsGang(Player& player) const; //TODO: COMMENT
+
+    void printWinLose(bool win, const std::string& name) const;//TODO: COMMENT
+
     virtual void onLoss(Player& player) const;
     /*
      * Here we are explicitly telling the compiler to use the default methods

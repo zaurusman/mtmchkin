@@ -16,24 +16,45 @@ void BattleCard::applyEncounter(Player& player) const
 {
     if(player.getAttackStrength()>=this->m_force)
     {
-        printWinBattle(player.getName(),this->getName());
+        printWinLose(true ,player.getName());
         player.addCoins(m_loot);
         player.levelUp();
     } else
     {
+        printWinLose(false ,player.getName());
         onLoss(player);
     }
 }
 
 void BattleCard::onLoss(Player& player) const
 {
-    printLossBattle(player.getName(),this->getName());
     if(m_loss==INFINITE_DAMAGE)//is Dragon
     {
         player.damage(player.getHP());
     }
     else {
         player.damage(m_loss);
+    }
+}
+
+bool BattleCard::applyEncounterAsGang(Player& player) const{
+    if(player.getAttackStrength()>=this->m_force)
+    {
+        player.addCoins(m_loot);
+        return false;
+    } else
+    {
+        onLoss(player);
+        return true;
+    }
+}
+
+void BattleCard::printWinLose(bool win, const std::string& name) const{
+    if (win){
+        printWinBattle(name,this->getName());
+    }
+    else{
+        printLossBattle(name, this->getName());
     }
 }
 
