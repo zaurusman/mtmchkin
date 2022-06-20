@@ -4,26 +4,26 @@
 
 #include "Exception.h"
 #include "Mtmchkin.h"
-#include <string>
-
-const std::string deckFile = "deck.txt";
+#include "string"
 
 
-
-int macin()
+int main()
 {
+    const std::string deckFile = "deck.txt";
+    const int MAX_ROUNDS = 100;
+    int count = 0 ;
     try
     {
         Mtmchkin game(deckFile);
-        while(!game.isGameOver())
+        while(!game.isGameOver() && count < MAX_ROUNDS)
         {
             game.playRound();
             game.printLeaderBoard();
         }
     }
-    catch(const std::exception& e)
+    catch(const std::exception& gameException)
     {
-        std::cout << e.what() << std::endl;
+        std::cout << gameException.what() << std::endl;
     }
     return 0;
 }

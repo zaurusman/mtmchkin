@@ -28,7 +28,7 @@ public:
     /*
      * Here we are explicitly telling the compiler to use the default methods
     */
-    ~Fairy() = default;
+    ~Fairy() override = default;
     Fairy(const Fairy& other) = default;
     Fairy& operator=(const Fairy& other) = default;
 

@@ -28,7 +28,8 @@ public:
     /*
      * Here we are explicitly telling the compiler to use the default methods
     */
-    ~Barfight() = default;
+
+    ~Barfight() override = default;
     Barfight(const Barfight& other) = default;
     Barfight& operator=(const Barfight& other) = default;
 private:

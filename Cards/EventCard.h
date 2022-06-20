@@ -23,7 +23,7 @@ public:
     /*
      * Here we are explicitly telling the compiler to use the default methods
     */
-    ~EventCard() = default;
+    ~EventCard() override = default;
     EventCard(const EventCard& other) = default;
     EventCard& operator=(const EventCard& other) = default;
 };

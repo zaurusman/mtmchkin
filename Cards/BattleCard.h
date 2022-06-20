@@ -39,15 +39,36 @@ public:
      */
     void applyEncounter(Player &player) const override;
 
-    bool applyEncounterAsGang(Player& player) const; //TODO: COMMENT
+    /*
+     * applies the encounter for the BattleCard, without printing:
+     * if the player has enough force he levels up and gets the loot, else he losses health.
+     * @param player - the player who activated the card.
+     * returns
+     *          true iff the encounter was lost
+     */
+    bool applyEncounterAsGang(Player& player) const;
 
-    void printWinLose(bool win, const std::string& name) const;//TODO: COMMENT
+    /*
+     * prints a message telling if the player won or lost
+     * @param win - did the player win?
+     * @param name - name of the player
+     * returns
+     *          void
+     */
+    void printWinLose(bool win, const std::string& name) const;
 
+    /*
+     * applies the consequences for a loss to the card
+     * @param player - the player who activated the card.
+     * returns
+     *          void
+     */
     virtual void onLoss(Player& player) const;
+
     /*
      * Here we are explicitly telling the compiler to use the default methods
     */
-    ~BattleCard() = default;
+    ~BattleCard() override = default;
     BattleCard(const BattleCard&) = default;
     BattleCard& operator=(const BattleCard&) = default;
 

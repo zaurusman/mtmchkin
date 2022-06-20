@@ -362,7 +362,7 @@ bool gangTest3(){
 /* ---------------------------------------------------------------------------------------------- */
 // --------------------------------       Main function          ------------------------------
 
-int main(){
+int macin(){
     
 	run_test(cardsPrintsTest,"cardsPrintsTest");
 	run_test(playersPrintsTest,"playersPrintsTest");

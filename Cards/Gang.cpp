@@ -10,6 +10,9 @@ BattleCard(GANG_STAT, GANG_STAT, GANG_STAT,"Gang")
     std::string cardName;
     while(getline(gangFile, cardName) && cardName!="EndGang")
     {
+        if(cardName == "Gang"){
+            throw BadGangFormat(lineNumber);
+        }
         lineNumber++;
         std::unique_ptr<BattleCard> current(std::move
         (Factories::createBattleCardFromStream(gangFile,cardName,++lineNumber)));
@@ -44,9 +47,17 @@ void Gang::applyEncounter(Player &player) const
     }
 }
 
-
-int Gang::getSize() const
-{
-    return m_monsters.size();
+void Gang::getInfoStream(std::ostream &outStream) const{
+    outStream << "The gangs all here, introducing:\n";
+    std::string name;
+    for (std::unique_ptr<BattleCard>const &card : m_monsters){
+        name = card->getName();
+        outStream << name +"\n";
+    }
+    outStream << "Good Luck!\n";
 }
 
+Gang::Gang(const Gang& other):
+BattleCard(GANG_STAT, GANG_STAT, GANG_STAT,"Gang"), {
+
+}
