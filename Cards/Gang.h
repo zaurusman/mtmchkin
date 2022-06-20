@@ -21,6 +21,15 @@ public:
   */
     Gang(std::istream &cardList,int& lineNumber);
 
+
+    /*
+     * applies the encounter for the Gang:
+     * if the player has enough force he levels up and gets the loot, else he losses health from all
+     * subsequent monsters.
+     * @param player - the player who activated the card.
+     * returns
+     *          void
+     */
     void applyEncounter(Player &player) const override;
 
     /*
@@ -34,11 +43,11 @@ public:
      * Here we are explicitly telling the compiler to use the default methods
     */
     ~Gang() override = default;
-    Gang(const Gang& other);
+    Gang(const Gang& other) = default;
     Gang& operator=(const Gang& other) = default;
 private:
     const int GANG_STAT = 0;
-    std::vector<std::unique_ptr<BattleCard>> m_monsters;
+    std::vector<std::shared_ptr<BattleCard>> m_monsters;
 
 };
 

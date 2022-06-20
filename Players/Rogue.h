@@ -22,7 +22,7 @@ public:
      *return
      *      a new instance of Rogue
      */
-    Rogue(std::string name);
+    explicit Rogue(std::string name);
 
 
     /*
@@ -43,7 +43,7 @@ public:
     /*
      * Here we are explicitly telling the compiler to use the default methods
     */
-    ~Rogue()=default;
+    ~Rogue() override=default;
     Rogue(const Rogue &other) = default;
     Rogue& operator=(const Rogue &other) = default;
 };

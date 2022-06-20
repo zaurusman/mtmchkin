@@ -7,7 +7,7 @@
 #include "string"
 
 
-int main()
+int mcain()
 {
     const std::string deckFile = "deck.txt";
     const int MAX_ROUNDS = 100;

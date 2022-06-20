@@ -34,7 +34,7 @@ public:
     /*
     * Here we are explicitly telling the compiler to use the default methods
    */
-    ~Merchant() = default;
+    ~Merchant() override = default;
     Merchant(const Merchant &other) = default;
     Merchant& operator=(const Merchant &other) = default;
 

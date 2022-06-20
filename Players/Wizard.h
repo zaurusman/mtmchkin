@@ -22,7 +22,7 @@ public:
      *return
      *      a new instance of Wizard
      */
-    Wizard(std::string name);
+    explicit Wizard(std::string name);
 
     /*
      * adds to the Wizard's HP, calculated as mentioned above.
@@ -42,7 +42,7 @@ public:
     /*
     * Here we are explicitly telling the compiler to use the default methods
     */
-    ~Wizard()=default;
+    ~Wizard() override =default;
     Wizard(const Wizard &other) = default;
     Wizard& operator=(const Wizard &other) = default;
 };

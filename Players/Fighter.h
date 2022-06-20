@@ -42,7 +42,7 @@ public:
     /*
      * Here we are explicitly telling the compiler to use the default methods
     */
-    ~Fighter()=default;
+    ~Fighter() override=default;
     Fighter(const Fighter &other) = default;
     Fighter& operator=(const Fighter &other) = default;
 };

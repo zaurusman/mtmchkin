@@ -17,7 +17,7 @@ public:
     /*
      * Here we are explicitly telling the compiler to use the default methods
     */
-    ~Goblin()=default;
+    ~Goblin() override =default;
     Goblin(const Goblin &other) = default;
     Goblin& operator=(const Goblin &other) = default;
 private:

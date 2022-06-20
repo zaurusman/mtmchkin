@@ -78,6 +78,15 @@ private:
     */
     static int initTeamSize();
 
+    /*
+   *  Gets input for players info
+   *  check if it's valid
+   *  if not - asks for it again.
+     *  creates the queue
+   *
+   *  @return
+   *         int of a valid team size.
+   */
     void createPlayerQueue(int teamSize);
 
 
