@@ -13,7 +13,7 @@
 
 class Gang : public BattleCard {
 public:
-    Gang(std::istream &cardList,int lineNumber);
+    Gang(std::istream &cardList,int& lineNumber);
 
     void applyEncounter(Player &player) const override;
 

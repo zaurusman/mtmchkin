@@ -3,20 +3,19 @@
 //
 
 #include "Factories.h"
-BattleCard* Factories::createBattleCardFromStream(std::istream &cardDeckFile, std::string& name, int& lineNumber){
+std::unique_ptr<BattleCard> Factories::createBattleCardFromStream
+(std::istream &cardDeckFile, std::string& name, int& lineNumber){
     if (name == "Dragon") {
-        return new Dragon();
+        return std::unique_ptr<BattleCard>(new Dragon());
     }
     if (name == "Goblin") {
-        return new Goblin();
+        return std::unique_ptr<BattleCard>(new Goblin());
     }
     if (name == "Vampire") {
-        return new Vampire();
+        return std::unique_ptr<BattleCard>(new Vampire());
     }
     if (name == "Gang") {
-     Gang* newGang = new Gang(cardDeckFile, lineNumber);
-     lineNumber += newGang->getSize();
-     return newGang;
+        return std::unique_ptr<BattleCard>(new Gang(cardDeckFile, lineNumber));
     }
     throw DeckFileFormatError(lineNumber);
 }
@@ -40,8 +39,7 @@ std::unique_ptr<Card> Factories::createCardFromStream(std::istream &cardDeckFile
     if (name == "Treasure") {
         return std::unique_ptr<Card>(new Treasure());
     }
-    std::unique_ptr<Card> card (Factories::createBattleCardFromStream(cardDeckFile, name, lineNumber));
-    return card;
+    return std::unique_ptr<Card>(std::move(Factories::createBattleCardFromStream(cardDeckFile, name, lineNumber)));
 
 }
 

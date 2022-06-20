@@ -32,7 +32,8 @@ namespace Factories {
      * return
      *  pointer to a new instance of card based on the string
      */
-    BattleCard* createBattleCardFromStream(std::istream &cardDeckFile, std::string& name, int& lineNumber);
+    std::unique_ptr<BattleCard> createBattleCardFromStream
+            (std::istream &cardDeckFile, std::string& name, int& lineNumber);
 
     /*
      * creates a player based on 2 given strings

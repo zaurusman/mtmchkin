@@ -4,14 +4,15 @@
 
 #include "Gang.h"
 
-Gang::Gang(std::istream &gangFile,int lineNumber):
+Gang::Gang(std::istream &gangFile,int& lineNumber):
 BattleCard(GANG_STAT, GANG_STAT, GANG_STAT,"Gang")
 {
     std::string cardName;
     while(getline(gangFile, cardName) && cardName!="EndGang")
     {
-        Card* temp = Factories::createBattleCardFromStream(gangFile,cardName,++lineNumber);
-        std::unique_ptr<BattleCard> current (dynamic_cast<BattleCard*>(temp));
+        lineNumber++;
+        std::unique_ptr<BattleCard> current(std::move
+        (Factories::createBattleCardFromStream(gangFile,cardName,++lineNumber)));
         m_monsters.push_back(std::move(current));
     }
 }
