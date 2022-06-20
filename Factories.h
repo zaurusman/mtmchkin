@@ -32,8 +32,7 @@ namespace Factories {
      * return
      *  pointer to a new instance of card based on the string
      */
-    std::unique_ptr<BattleCard> createBattleCardFromStream
-            (std::istream &cardDeckFile, std::string& name, int& lineNumber);
+    std::unique_ptr<BattleCard> createSingleBattleCard(std::string& name, int& lineNumber);
 
     /*
      * creates a player based on 2 given strings
@@ -43,5 +42,11 @@ namespace Factories {
      *  pointer to a new instance of player based on the string
      */
     std::unique_ptr<Player> createPlayer(std::string& name, std::string& job);
+
+
+
+    std::unique_ptr<Card> createGang(std::istream &cardDeckFile, int& lineNumber); //TODO: COMMENT
 }
+
+
 #endif //MTMCHKIN_CARDFACTORIES_H

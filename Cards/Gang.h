@@ -13,14 +13,16 @@
 
 class Gang : public BattleCard {
 public:
-    Gang(std::istream &cardList,int& lineNumber);
+    Gang();
 
     void applyEncounter(Player &player) const override;
+
+    void addMonster(BattleCard& card);
 
     int getSize() const;
 
 private:
-    const int GANG_STAT = 0;
+    static const int GANG_STAT = 0;
     std::vector<std::unique_ptr<BattleCard>> m_monsters;
 
 };

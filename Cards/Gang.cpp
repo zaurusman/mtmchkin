@@ -4,21 +4,10 @@
 
 #include "Gang.h"
 
-Gang::Gang(std::istream &gangFile,int& lineNumber):
-BattleCard(GANG_STAT, GANG_STAT, GANG_STAT,"Gang")
-{
-    std::string cardName;
-    while(getline(gangFile, cardName) && cardName!="EndGang")
-    {
-        lineNumber++;
-        std::unique_ptr<BattleCard> current(std::move
-        (Factories::createBattleCardFromStream(gangFile,cardName,++lineNumber)));
-        m_monsters.push_back(std::move(current));
-    }
-    if (cardName!="EndGang"){
-        throw BadGangFormat(lineNumber);
-    }
-}
+Gang::Gang():
+BattleCard(GANG_STAT, GANG_STAT, GANG_STAT,"Gang"),
+m_monsters(std::vector<std::unique_ptr<BattleCard>>())
+{}
 
 void Gang::applyEncounter(Player &player) const
 {
@@ -42,6 +31,11 @@ void Gang::applyEncounter(Player &player) const
         player.levelUp();
        this->printWinLose(!lost, player.getName());
     }
+}
+
+void Gang::addMonster(BattleCard& card){
+    std::unique_ptr<BattleCard> cardPtr(&card);
+    m_monsters.push_back(std::move(cardPtr));
 }
 
 
