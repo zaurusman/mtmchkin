@@ -52,6 +52,11 @@ class InvalidMerchantInput: public std::invalid_argument{
 public:
     InvalidMerchantInput(): std::invalid_argument("Merchant Input Error: Input is invalid"){}
 };
+class BadGangFormat: public std::runtime_error{
+public:
+    explicit BadGangFormat(int lineNumber):
+            std::runtime_error("Gang Format Error: format error in line " + std::to_string(lineNumber)){}
+};
 
 
 #endif //MTMCHKIN_EXCEPTION_H

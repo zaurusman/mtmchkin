@@ -15,6 +15,9 @@ BattleCard(GANG_STAT, GANG_STAT, GANG_STAT,"Gang")
         (Factories::createBattleCardFromStream(gangFile,cardName,++lineNumber)));
         m_monsters.push_back(std::move(current));
     }
+    if (cardName!="EndGang"){
+        throw BadGangFormat(lineNumber);
+    }
 }
 
 void Gang::applyEncounter(Player &player) const

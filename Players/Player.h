@@ -163,7 +163,7 @@ public:
      * using default d'tor, cpy c'tor and assignment operator.
      */
     Player(const Player&) = default;
-    ~Player() = default;
+    virtual ~Player() = default;
     Player& operator=(const Player& other) = default;
 
 

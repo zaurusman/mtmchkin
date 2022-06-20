@@ -4,7 +4,7 @@
 
 #include "Factories.h"
 std::unique_ptr<BattleCard> Factories::createBattleCardFromStream
-(std::istream &cardDeckFile, std::string& name, int& lineNumber){
+(std::istream &cardDeckFile, std::string& name, int& lineNumber) {
     if (name == "Dragon") {
         return std::unique_ptr<BattleCard>(new Dragon());
     }
@@ -14,8 +14,13 @@ std::unique_ptr<BattleCard> Factories::createBattleCardFromStream
     if (name == "Vampire") {
         return std::unique_ptr<BattleCard>(new Vampire());
     }
-    if (name == "Gang") {
-        return std::unique_ptr<BattleCard>(new Gang(cardDeckFile, lineNumber));
+    try {
+        if (name == "Gang") {
+            return std::unique_ptr<BattleCard>(new Gang(cardDeckFile, lineNumber));
+        }
+    }
+    catch (BadGangFormat &e) {
+        throw DeckFileFormatError(lineNumber);
     }
     throw DeckFileFormatError(lineNumber);
 }
