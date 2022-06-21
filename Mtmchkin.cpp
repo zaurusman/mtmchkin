@@ -145,8 +145,7 @@ void Mtmchkin::createPlayerQueue(int teamSize){
 
 bool Mtmchkin::isTeamSizeValid(std::string input){
     const std::string validChars("0123456789");
-    int firstInvalid = input.find_first_not_of(validChars);
-    if (std::string::npos == firstInvalid){
+    if (std::string::npos ==  input.find_first_not_of(validChars)){
         int number = std::stoi(input);
         if (number <= MAX_TEAM_SIZE && number >= MIN_TEAM_SIZE){
             return true;

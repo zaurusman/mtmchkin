@@ -64,8 +64,7 @@ int Merchant::applyDecision(int decision, Player &player)
 
 int Merchant::getDecision(std::string line) {
     const std::string numbers("0123456789");
-    int badCharLocation = line.find_first_not_of(numbers);
-    if(badCharLocation != std::string::npos){
+    if(line.find_first_not_of(numbers) == std::string::npos){
         return std::stoi(line);
     }
     else{
