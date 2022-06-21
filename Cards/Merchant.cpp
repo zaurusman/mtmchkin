@@ -30,6 +30,7 @@ void Merchant::applyEncounter(Player &player) const
 
 int Merchant::applyDecision(int decision, Player &player)
 {
+
     int cost=0;
     switch (decision) {
         case Merchant::BUY_POTION : {
