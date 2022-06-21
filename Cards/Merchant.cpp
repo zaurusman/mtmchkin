@@ -19,11 +19,11 @@ void Merchant::applyEncounter(Player &player) const
         try {
             decision = getDecision(line);
             cost = applyDecision(decision, player);
+            inputValid = true;
         }
         catch (const std::invalid_argument& e){
             printInvalidInput();
         }
-        inputValid = true;
     }
     printMerchantSummary(std::cout,player.getName(), decision, cost);
 }
