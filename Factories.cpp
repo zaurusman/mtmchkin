@@ -49,7 +49,7 @@ std::unique_ptr<Card> Factories::createCardFromStream(std::istream &cardDeckFile
 }
 
 std::unique_ptr<Player> Factories::createPlayer(std::string& name, std::string& job) {
-    if(!Player::isValidName(name)){
+    if(!isValidName(name)){
         throw InvalidName();
     }
     if (job == "Fighter") {
