@@ -21,7 +21,7 @@ void Merchant::applyEncounter(Player &player) const
             cost = applyDecision(decision, player);
             inputValid = true;
         }
-        catch (const std::invalid_argument& e){
+        catch (const std::exception& e){
             printInvalidInput();
         }
     }
