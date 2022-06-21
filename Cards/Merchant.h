@@ -43,11 +43,21 @@ private:
     /*
      * checks the input of the player for the merchant.
      * if its valid acts accordingly.
+     * throws InvalidMerchantInput upon failure
      * return:
      * for valid input returns the price of the purchase.
      * for invalid input returns INVALID_INPUT.
      */
     static int applyDecision(int decision, Player &player);
+
+    /*
+     * checks if a player decision is valid and turns it into an int
+     * throws InvalidMerchantInput upon failure
+     * @param line - player input
+     * return
+     *          the decision number
+     */
+    static int getDecision(std::string line);
 
     static const int DONT_BUY = 0;
     static const int BUY_POTION = 1;

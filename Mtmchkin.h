@@ -89,6 +89,13 @@ private:
    */
     void createPlayerQueue(int teamSize);
 
+    /*
+     * checks if a string is a valid team size
+     * @param input - a string with the input
+     * return
+     *          true iff its a valid team size
+     */
+    static bool isTeamSizeValid(std::string input);
 
     static const char NAME_DELIMITER = ' ';
     static const char JOB_DELIMITER = '\n';

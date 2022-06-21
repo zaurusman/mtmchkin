@@ -17,7 +17,7 @@ void Merchant::applyEncounter(Player &player) const
     while (!inputValid) {
         getline(std::cin, line);
         try {
-            decision = std::stoi(line);
+            decision = getDecision(line);
             cost = applyDecision(decision, player);
         }
         catch (const std::invalid_argument& e){
@@ -60,6 +60,17 @@ int Merchant::applyDecision(int decision, Player &player)
         }
     }
     return cost;
+}
+
+int Merchant::getDecision(std::string line) {
+    const std::string numbers("0123456789");
+    int badCharLocation = line.find_first_not_of(numbers);
+    if(badCharLocation != std::string::npos){
+        return std::stoi(line);
+    }
+    else{
+        throw InvalidMerchantInput();
+    }
 }
 
 
