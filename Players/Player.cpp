@@ -5,8 +5,6 @@
 #include "Player.h"
 #include "../utilities.h"
 
-static bool isValidName(std::string name);
-
 Player::Player(std::string name) :
     m_name(""),
     m_level(Player::DEFAULT_START_LEVEL),
