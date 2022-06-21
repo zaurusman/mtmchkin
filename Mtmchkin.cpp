@@ -104,10 +104,11 @@ int Mtmchkin::initTeamSize()
     {
         try {
             getline(std::cin, line);
-            teamSize = std::stoi(line);
-            if (teamSize > MAX_TEAM_SIZE || teamSize < MIN_TEAM_SIZE) {
+            if (!isTeamSizeValid(line)) {
                 printInvalidTeamSize();
+                printEnterTeamSizeMessage();
             } else {
+                teamSize = std::stoi(line);
                 parameterOkay = true;
             }
         }
@@ -140,4 +141,16 @@ void Mtmchkin::createPlayerQueue(int teamSize){
         }
         parameterOkay = false;
     }
+}
+
+
+bool Mtmchkin::isTeamSizeValid(std::string input){
+    const std::string validChars("0123456789");
+    if (std::string::npos ==  input.find_first_not_of(validChars)){
+        int number = std::stoi(input);
+        if (number <= MAX_TEAM_SIZE && number >= MIN_TEAM_SIZE){
+            return true;
+        }
+    }
+    return false;
 }

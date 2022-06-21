@@ -19,7 +19,7 @@ public:
     /*
      * Here we are explicitly telling the compiler to use the default methods
     */
-    ~Dragon() = default;
+    ~Dragon() override = default;
     Dragon(const Dragon &other) = default;
     Dragon& operator=(const Dragon &other) = default;
 

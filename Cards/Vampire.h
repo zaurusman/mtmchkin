@@ -14,12 +14,20 @@ public:
      */
     Vampire();
 
+    /*
+     * applies the consequences for a loss to the card
+     * @param player - the player who activated the card.
+     * returns
+     *          void
+     */
 
     void onLoss(Player &player) const override;
+
+
     /*
      * Here we are explicitly telling the compiler to use the default methods
     */
-    ~Vampire()=default;
+    ~Vampire() override =default;
     Vampire(const Vampire &other) = default;
     Vampire& operator=(const Vampire &other) = default;
 private:

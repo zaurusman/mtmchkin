@@ -38,14 +38,15 @@ void BattleCard::onLoss(Player& player) const
 }
 
 bool BattleCard::applyEncounterAsGang(Player& player) const{
+    bool lost = true;
     if(player.getAttackStrength()>=this->m_force)
     {
         player.addCoins(m_loot);
-        return false;
+        return !lost;
     } else
     {
         onLoss(player);
-        return true;
+        return lost;
     }
 }
 

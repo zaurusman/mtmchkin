@@ -159,6 +159,7 @@ public:
     */
     void unBuff(int decrease);
 
+
     /*
      * using default d'tor, cpy c'tor and assignment operator.
      */
@@ -200,7 +201,13 @@ private:
  */
 std::ostream& operator<<(std::ostream& outStream, const Player& player);
 
-
+ /*
+     * checks if a given name is valid
+     * param name - the name to check
+     * return
+     *      true iff name is valid
+     */
+bool isValidName(std::string name);
 
 
 

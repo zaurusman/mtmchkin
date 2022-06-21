@@ -28,7 +28,7 @@ public:
     /*
      * Here we are explicitly telling the compiler to use the default methods
     */
-    ~Pitfall() = default;
+    ~Pitfall() override = default;
     Pitfall(const Pitfall& other) = default;
     Pitfall& operator=(const Pitfall& other) = default;
 

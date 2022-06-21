@@ -26,7 +26,8 @@ namespace Factories {
     std::unique_ptr<Card> createCardFromStream(std::istream &cardDeckFile, int& lineNumber);
 
     /*
-     * creates a battle card based on a given string
+     * creates a battle card based on a given stream
+     * @param cardDeckFile - the stream we read from
      * @param name - the name of the card
      * @param lineNumber - the line the string came from
      * return

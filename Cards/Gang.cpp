@@ -4,15 +4,30 @@
 
 #include "Gang.h"
 
-Gang::Gang():
+Gang::Gang(std::istream &gangFile,int& lineNumber):
 BattleCard(GANG_STAT, GANG_STAT, GANG_STAT,"Gang"),
-m_monsters(std::vector<std::unique_ptr<BattleCard>>())
-{}
+m_monsters(std::vector<std::shared_ptr<BattleCard>>())
+{
+    std::string cardName;
+    while(getline(gangFile, cardName) && cardName!="EndGang")
+    {
+        if(cardName == "Gang"){
+            throw BadGangFormat(lineNumber);
+        }
+        lineNumber++;
+        std::shared_ptr<BattleCard> current(std::move
+        (Factories::createBattleCardFromStream(gangFile,cardName,++lineNumber)));
+        m_monsters.push_back(std::move(current));
+    }
+    if (cardName!="EndGang"){
+        throw BadGangFormat(lineNumber);
+    }
+}
 
 void Gang::applyEncounter(Player &player) const
 {
     bool lost = false;
-    for (std::unique_ptr<BattleCard>const &card : m_monsters)
+    for (std::shared_ptr<BattleCard>const &card : m_monsters)
     {
         if(lost)
         {
@@ -33,14 +48,13 @@ void Gang::applyEncounter(Player &player) const
     }
 }
 
-void Gang::addMonster(BattleCard& card){
-    std::unique_ptr<BattleCard> cardPtr(&card);
-    m_monsters.push_back(std::move(cardPtr));
-}
-
-
-int Gang::getSize() const
-{
-    return m_monsters.size();
+void Gang::getInfoStream(std::ostream &outStream) const{
+    outStream << "The gangs all here, introducing:\n";
+    std::string name;
+    for (std::shared_ptr<BattleCard>const &card : m_monsters){
+        name = card->getName();
+        outStream << name +"\n";
+    }
+    outStream << "Good Luck!\n";
 }
 

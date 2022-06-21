@@ -3,7 +3,8 @@
 //
 
 #include "Factories.h"
-std::unique_ptr<BattleCard> Factories::createSingleBattleCard(std::string& name, int& lineNumber) {
+std::unique_ptr<BattleCard> Factories::createBattleCardFromStream
+(std::istream &cardDeckFile, std::string& name, int& lineNumber) {
     if (name == "Dragon") {
         return std::unique_ptr<BattleCard>(new Dragon());
     }
@@ -12,6 +13,14 @@ std::unique_ptr<BattleCard> Factories::createSingleBattleCard(std::string& name,
     }
     if (name == "Vampire") {
         return std::unique_ptr<BattleCard>(new Vampire());
+    }
+    try {
+        if (name == "Gang") {
+            return std::unique_ptr<BattleCard>(new Gang(cardDeckFile, lineNumber));
+        }
+    }
+    catch (BadGangFormat &e) {
+        throw DeckFileFormatError(lineNumber);
     }
     throw DeckFileFormatError(lineNumber);
 }
@@ -35,13 +44,15 @@ std::unique_ptr<Card> Factories::createCardFromStream(std::istream &cardDeckFile
     if (name == "Treasure") {
         return std::unique_ptr<Card>(new Treasure());
     }
-    if (name == "Gang") {
-        return Factories::createGang(cardDeckFile, lineNumber);
-    }
-    return std::move(Factories::createSingleBattleCard(name, lineNumber));
+
+    return std::unique_ptr<Card>(std::move(Factories::createBattleCardFromStream(cardDeckFile, name, lineNumber)));
+
 }
 
 std::unique_ptr<Player> Factories::createPlayer(std::string& name, std::string& job) {
+    if(!isValidName(name)){
+        throw InvalidName();
+    }
     if (job == "Fighter") {
         return std::unique_ptr<Player>(new Fighter(name));
     }
@@ -53,22 +64,4 @@ std::unique_ptr<Player> Factories::createPlayer(std::string& name, std::string& 
     }
     throw InvalidClass();
 }
-
-std::unique_ptr<Card> Factories::createGang(std::istream &cardDeckFile, int& lineNumber){
-    std::unique_ptr<Gang> newGang(new Gang());
-    std::string cardName;
-    while(getline(cardDeckFile, cardName) && cardName!="EndGang")
-    {
-        lineNumber++;
-        std::unique_ptr<BattleCard> cardPtr(std::move(Factories::createSingleBattleCard(cardName, lineNumber)));
-        BattleCard& card = *cardPtr;
-        newGang->addMonster(card);
-    }
-    if (cardName!="EndGang"){
-        throw BadGangFormat(lineNumber);
-    }
-    return std::unique_ptr<BattleCard>(std::move(newGang));
-}
-
-
 
