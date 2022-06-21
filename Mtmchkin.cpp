@@ -106,6 +106,7 @@ int Mtmchkin::initTeamSize()
             getline(std::cin, line);
             if (!isTeamSizeValid(line)) {
                 printInvalidTeamSize();
+                printEnterTeamSizeMessage();
             } else {
                 teamSize = std::stoi(line);
                 parameterOkay = true;

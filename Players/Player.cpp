@@ -135,7 +135,7 @@ int Player::getHP() const
     return m_HP;
 }
 
-static bool isValidName(std::string name)
+bool Player::isValidName(std::string name)
 {
     if(name.length()>15)
     {
