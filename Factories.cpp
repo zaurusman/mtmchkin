@@ -44,6 +44,7 @@ std::unique_ptr<Card> Factories::createCardFromStream(std::istream &cardDeckFile
     if (name == "Treasure") {
         return std::unique_ptr<Card>(new Treasure());
     }
+
     return std::unique_ptr<Card>(std::move(Factories::createBattleCardFromStream(cardDeckFile, name, lineNumber)));
 
 }
